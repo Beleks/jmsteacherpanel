@@ -10,10 +10,19 @@ const routes = [
     name: 'Profile',
     component: () => import('../views/index.vue'),
     children: [
-      { path: 'profile', component: () => import('../views/courses/Courses.vue') },
-      { path: 'calendar', component: () => import('../views/courses/Courses.vue') },
-      { path: 'courses', component: () => import('../views/courses/Courses.vue') },
-      { path: 'settings', component: () => import('../views/courses/Courses.vue') }
+      { path: 'profile', component: () => import('../views/profile/Profile.vue') },
+      { path: 'calendar', component: () => import('../views/calendar/Calendar.vue') },
+      {
+        path: 'courses',
+        component: () => import('../views/courses/Courses.vue'),
+        children: [
+          {
+            path: ':id',
+            component: () => import('../views/courses/course name/Course.vue')
+          }
+        ]
+      },
+      { path: 'settings', component: () => import('../views/settings/Settings.vue') }
     ]
   },
 

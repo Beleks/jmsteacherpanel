@@ -27,7 +27,7 @@ export default {
       menuItems: [
         {
           title: "Профиль",
-          path: "/",
+          path: "/profile",
           svg: "SvgCourse",
         },
         {
@@ -49,14 +49,17 @@ export default {
     };
   },
   computed: {
-    choseMenuItem(){
-      return this.$route.path
-    }
+    choseMenuItem() {
+      console.log(this.$route.matched[1].path);
+      return this.$route.matched[1].path;
+      // При переходе на путь "/" выдает ошибку ??
+    },
   },
   methods: {
     choseItem(el) {
-      this.$router.push({path: `${el.path}`})
-      // this.choseMenuItem = el.page;
+      if (el.path !== this.choseMenuItem) {
+        this.$router.push({ path: `${el.path}` });
+      }
     },
   },
   components: {
