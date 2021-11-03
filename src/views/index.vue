@@ -1,9 +1,6 @@
 <template>
-  <div>
+  <div class="container">
     <div class="menu">
-      <!-- Меню 
-        Курсы, Профиль препода, календарь и.т.д
-       -->
       <div class="header">
         <div>JMS</div>
         <div>teacher</div>
@@ -13,10 +10,11 @@
         <MainMenu />
       </div>
     </div>
-    <div>
+    <div class="page">
       <!-- главный блок -->
-      <div>
-        <!-- верхнее меню -->
+      <div class="header">
+        <div></div>
+        <div class="exit">Выйти</div>
       </div>
       <div>
         <router-view></router-view>
@@ -33,20 +31,23 @@ export default {
     return {};
   },
   components: {
-    MainMenu
-  }
+    MainMenu,
+  },
 };
 </script>
 
 
 <style lang="scss" scoped>
+.container {
+  display: flex;
+}
 .menu {
   .header {
     display: flex;
     align-items: center;
     font-size: 1.5em;
 
-    margin-bottom: 2em;
+    margin-bottom: 2rem;
 
     > div:last-child {
       font-size: 0.875rem;
@@ -57,10 +58,27 @@ export default {
   font-family: "Roboto Medium";
   min-width: 276px;
   height: 100vh;
-  position: fixed;
   background-color: #f9f9ff;
   box-shadow: 4px 0px 15px rgba(0, 0, 0, 0.05);
 
   padding: 30px 50px;
+}
+.page {
+  padding: 30px 50px;
+  font-family: "Roboto Medium";
+  width: 100%;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 2.8rem;
+    // Нечеткое определение отступа ??
+    .exit {
+      color: rgba(43, 45, 66, 0.6);
+      cursor: pointer;
+      user-select: none;
+    }
+  }
 }
 </style>

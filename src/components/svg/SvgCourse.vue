@@ -60,6 +60,7 @@ div {
 }
 svg {
   stroke: #2b2d42;
+  transition: stroke 0.3s ease-in-out;
 }
 .active{
   stroke: #F1F1FD;

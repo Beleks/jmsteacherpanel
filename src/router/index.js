@@ -8,8 +8,15 @@ const routes = [
   {
     path: '/',
     name: 'Profile',
-    component: () => import('../views/index.vue')
+    component: () => import('../views/index.vue'),
+    children: [
+      { path: 'profile', component: () => import('../views/courses/Courses.vue') },
+      { path: 'calendar', component: () => import('../views/courses/Courses.vue') },
+      { path: 'courses', component: () => import('../views/courses/Courses.vue') },
+      { path: 'settings', component: () => import('../views/courses/Courses.vue') }
+    ]
   },
+
   {
     path: '/about',
     name: 'About',

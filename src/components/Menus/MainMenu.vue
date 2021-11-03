@@ -4,13 +4,13 @@
       <div
         v-for="(menuItem, index) in menuItems"
         :key="index"
-        :class="{ menuItem, activeItem: menuItem.page === choseMenuItem}"
-        @click="choseMenuItem = menuItem.page"
+        :class="{ menuItem, activeItem: menuItem.path === choseMenuItem }"
+        @click="choseItem(menuItem)"
       >
         <component
           :is="menuItem.svg"
           class="svg"
-          :isActive="menuItem.page === choseMenuItem"
+          :isActive="menuItem.path === choseMenuItem"
         ></component>
         <div>{{ menuItem.title }}</div>
       </div>
@@ -24,38 +24,41 @@ import SvgCourse from "../svg/SvgCourse.vue";
 export default {
   data() {
     return {
-      // activeColor: "#F1F1FD",
-      // defColor: "#2B2D42",
-      choseMenuItem: 'courses',
       menuItems: [
         {
           title: "Профиль",
-          active: false,
-          page: "profile",
+          path: "/",
           svg: "SvgCourse",
         },
         {
           title: "Календарь",
-          active: false,
-          page: "calendar",
+          path: "/calendar",
           svg: "SvgCourse",
         },
         {
           title: "Курсы",
-          active: false,
-          page: "courses",
+          path: "/courses",
           svg: "SvgCourse",
         },
         {
           title: "Настройки",
-          active: false,
-          page: "settings",
+          path: "/settings",
           svg: "SvgCourse",
         },
       ],
     };
   },
-  methods: {},
+  computed: {
+    choseMenuItem(){
+      return this.$route.path
+    }
+  },
+  methods: {
+    choseItem(el) {
+      this.$router.push({path: `${el.path}`})
+      // this.choseMenuItem = el.page;
+    },
+  },
   components: {
     SvgCourse,
   },
@@ -70,12 +73,21 @@ export default {
   border-radius: 5px;
   margin-bottom: 8px;
   cursor: pointer;
+
+  user-select: none;
   > .svg {
     margin-right: 10px;
   }
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+.menuItem:hover {
+  background-color: rgba(111, 111, 240, 0.1);
 }
 .activeItem {
   background-color: #6f6ff0;
   color: #f1f1fd;
+}
+.activeItem:hover {
+  background-color: #6f6ff0;
 }
 </style>
