@@ -6,8 +6,9 @@
         <div>teacher</div>
       </div>
       <div>
+        <component :is="navMenu"></component>
         <!-- меняется в зависимости от страницы -->
-        <MainMenu />
+        <!-- <MainMenu /> -->
       </div>
     </div>
     <div class="page">
@@ -30,6 +31,14 @@ export default {
   data() {
     return {};
   },
+  computed: {
+    navMenu() {
+      // когда проваливаемся в курс то главное меню скрывается
+      if (!this.$route.params.id) {
+        return "MainMenu";
+      }
+    },
+  },
   components: {
     MainMenu,
   },
@@ -42,6 +51,8 @@ export default {
   display: flex;
 }
 .menu {
+  // position: fixed;
+
   .header {
     display: flex;
     align-items: center;
@@ -57,7 +68,7 @@ export default {
   }
   font-family: "Roboto Medium";
   min-width: 276px;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #f9f9ff;
   box-shadow: 4px 0px 15px rgba(0, 0, 0, 0.05);
 

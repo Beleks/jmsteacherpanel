@@ -50,7 +50,7 @@ export default {
   },
   computed: {
     choseMenuItem() {
-      console.log(this.$route.matched[1].path);
+      // console.log(this.$route.matched[1].path);
       return this.$route.matched[1].path;
       // При переходе на путь "/" выдает ошибку ??
     },
