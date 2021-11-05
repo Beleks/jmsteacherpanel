@@ -1,5 +1,10 @@
 <template>
-  <div>{{ PathParams }}</div>
+  <div>
+    <div>
+      {{ PathParams }}
+    </div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>

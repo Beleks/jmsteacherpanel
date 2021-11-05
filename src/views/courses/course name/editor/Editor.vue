@@ -1,6 +1,7 @@
 <template>
   <div>
-    content
+    editor
+    <router-view></router-view>
   </div>
 </template>
 

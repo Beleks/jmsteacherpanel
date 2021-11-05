@@ -40,12 +40,12 @@ export default {
       // Изменить при вложенности в editor
 
       let lastEl = this.$route.matched.length - 1;
-      // console.log(this.$route.matched[lastEl].path);
+      // console.log(this.$route.matched);
       if (this.$route.matched.length == 2) {
         return "MainMenu";
       } else if (this.$route.matched[lastEl].path == "/courses/:id") {
         return "CourseMenu";
-      } else if (this.$route.matched[lastEl].path == "/courses/:id/editor") {
+      } else if (this.$route.matched[lastEl-1].path == "/courses/:id/editor") {
         return "EditorMenu";
       }
       // ========

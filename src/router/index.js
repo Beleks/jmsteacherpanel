@@ -23,8 +23,22 @@ const routes = [
             children: [
               {
                 path: 'editor',
-                component: () => import('../views/courses/course name/editor/main info/MainInfo.vue')
-              }
+                component: () => import('../views/courses/course name/editor/Editor.vue'),
+                children: [
+                  {
+                    path: 'main',
+                    component: () => import('../views/courses/course name/editor/main_info/MainInfo.vue')
+                  },
+                  {
+                    path: 'content',
+                    component: () => import('../views/courses/course name/editor/content/Content.vue')
+                  },
+                  {
+                    path: 'tariffs',
+                    component: () => import('../views/courses/course name/editor/tariffs/Tariffs.vue')
+                  },
+                ],
+              },
             ]
           }
         ]

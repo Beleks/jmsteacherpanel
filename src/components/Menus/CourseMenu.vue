@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="editButton">
-      <router-link :to="`/courses/${idCourse}/editor`" tag="span"
+      <router-link :to="`/courses/${idCourse}/editor/main`" tag="span"
         >Редактировать</router-link
       >
     </div>

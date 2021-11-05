@@ -30,7 +30,7 @@
                 <!-- Убрать эффект ссылки / tag="span" - будет убран в 4v -->
                 <router-link
                   tag="span"
-                  :to="{ path: `${course.id}/editor` }"
+                  :to="{ path: `${course.id}/editor/main` }"
                   append
                 >
                   редактировать
