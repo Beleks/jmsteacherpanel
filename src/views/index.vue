@@ -26,6 +26,8 @@
 
 <script>
 import MainMenu from "../components/Menus/MainMenu.vue";
+import CourseMenu from "../components/Menus/CourseMenu.vue";
+import EditorMenu from "../components/Menus/EditorMenu.vue";
 
 export default {
   data() {
@@ -33,14 +35,26 @@ export default {
   },
   computed: {
     navMenu() {
-      // когда проваливаемся в курс то главное меню скрывается
-      if (!this.$route.params.id) {
+      // Выбор меню в зависимости от пути
+
+      // Изменить при вложенности в editor
+
+      let lastEl = this.$route.matched.length - 1;
+      // console.log(this.$route.matched[lastEl].path);
+      if (this.$route.matched.length == 2) {
         return "MainMenu";
+      } else if (this.$route.matched[lastEl].path == "/courses/:id") {
+        return "CourseMenu";
+      } else if (this.$route.matched[lastEl].path == "/courses/:id/editor") {
+        return "EditorMenu";
       }
+      // ========
     },
   },
   components: {
     MainMenu,
+    CourseMenu,
+    EditorMenu,
   },
 };
 </script>

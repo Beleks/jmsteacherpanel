@@ -74,9 +74,9 @@ export default {
   align-items: center;
   padding: 4px 10px;
   border-radius: 5px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   cursor: pointer;
-
+  
   user-select: none;
   > .svg {
     margin-right: 10px;

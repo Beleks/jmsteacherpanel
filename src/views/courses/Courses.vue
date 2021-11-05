@@ -21,10 +21,18 @@
           <div v-for="(course, index) in courses" :key="index" class="course">
             <div class="logo">лого</div>
             <div class="info">
-              <div class="title">{{ course.title }}</div>
+              <div class="title">
+                <router-link tag="span" :to="{ path: `${course.id}` }" append>
+                  {{ course.title }}
+                </router-link>
+              </div>
               <div class="edit">
                 <!-- Убрать эффект ссылки / tag="span" - будет убран в 4v -->
-                <router-link tag="span" :to="{ path: `${course.id}` }" append>
+                <router-link
+                  tag="span"
+                  :to="{ path: `${course.id}/editor` }"
+                  append
+                >
                   редактировать
                 </router-link>
               </div>

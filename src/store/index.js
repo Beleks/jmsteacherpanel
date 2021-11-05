@@ -5,6 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    courses: [
+      {
+        id: '1',
+        title: 'Курс по JS',
+        
+      }
+    ]
   },
   mutations: {
   },

@@ -19,7 +19,13 @@ const routes = [
         children: [
           {
             path: ':id',
-            component: () => import('../views/courses/course name/Course.vue')
+            component: () => import('../views/courses/course name/Course.vue'),
+            children: [
+              {
+                path: 'editor',
+                component: () => import('../views/courses/course name/editor/main info/MainInfo.vue')
+              }
+            ]
           }
         ]
       },
