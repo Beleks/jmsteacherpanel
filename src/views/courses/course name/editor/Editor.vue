@@ -1,6 +1,5 @@
 <template>
   <div>
-    editor
     <router-view></router-view>
   </div>
 </template>

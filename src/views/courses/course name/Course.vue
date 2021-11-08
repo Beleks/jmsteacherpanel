@@ -1,9 +1,10 @@
 <template>
   <div>
-    <div>
-      {{ PathParams }}
+    <div v-if="path">
     </div>
-    <router-view></router-view>
+    <div>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -13,6 +14,9 @@ export default {
     return {};
   },
   computed: {
+    path(){
+      return true;
+    },
     PathParams() {
       return this.$route.params.id;
     },

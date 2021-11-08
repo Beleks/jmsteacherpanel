@@ -40,7 +40,7 @@ export default {
       // Изменить при вложенности в editor
 
       let lastEl = this.$route.matched.length - 1;
-      // console.log(this.$route.matched);
+      console.log(this.$route.matched);
       if (this.$route.matched.length == 2) {
         return "MainMenu";
       } else if (this.$route.matched[lastEl].path == "/courses/:id") {

@@ -53,16 +53,16 @@ export default {
   data() {
     return {
       courses: [
-        { id: "1", title: "Курс от Профи до 0" },
+        { id: "6", title: "Курс от Профи до 0" },
         { id: "2", title: "Курс от Профи до 0" },
         { id: "3", title: "Курс от Профи до 0" },
       ],
     };
   },
   computed: {
-    // Что делать если путь равен '/courses/' ??
     path() {
-      if (this.$route.path == "/courses") {
+      let lastEl = this.$route.matched.length - 1;
+      if (this.$route.matched[lastEl].path == "/courses") {
         return true;
       } else {
         return false;
