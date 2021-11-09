@@ -27,14 +27,23 @@ const routes = [
                 children: [
                   {
                     path: 'main',
+                    name: 'mainEditor',
                     component: () => import('../views/courses/course name/editor/main_info/MainInfo.vue')
                   },
                   {
                     path: 'content',
-                    component: () => import('../views/courses/course name/editor/content/Content.vue')
+                    name: 'mainContent',
+                    component: () => import('../views/courses/course name/editor/content/Content.vue'),
+                    children: [
+                      {
+                        path: 'theory',
+                        component: () => import('../views/courses/course name/editor/content/theory/Theory.vue')
+                      },
+                    ]
                   },
                   {
                     path: 'tariffs',
+                    name: 'mainTariffs',
                     component: () => import('../views/courses/course name/editor/tariffs/Tariffs.vue')
                   },
                 ],

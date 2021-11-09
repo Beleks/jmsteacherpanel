@@ -3,10 +3,13 @@
     <div class="back">
       <router-link to="/courses" tag="span"> Вернуться к курсу</router-link>
     </div>
-    <div v-for="(menuItem, index) in menuItems" :key="index" class="menuItem">
-      <div>
-        {{ menuItem.title }}
-      </div>
+    <div
+      v-for="(menuItem, index) in menuItems"
+      :key="index"
+      :class="{ menuItem, activeItem: menuItem.path === mainPath }"
+      @click="choseItem(menuItem)"
+    >
+      <div>{{ menuItem.title }}</div>
     </div>
   </div>
 </template>
@@ -19,20 +22,41 @@ export default {
         {
           title: "Основная информация",
           path: "/main",
+          pathName: "mainEditor",
           // svg: "SvgCourse",
         },
         {
           title: "Содержание",
           path: "/content",
+          pathName: "mainContent",
           // svg: "SvgCourse",
         },
         {
           title: "Содержание",
-          path: "/content",
+          path: "/tariffs",
+          pathName: "mainTariffs",
           // svg: "SvgCourse",
         },
       ],
     };
+  },
+  computed: {
+    mainPath() {
+      // Возвращает путь для проверки
+      let mainPath = this.$route.matched[3].path;
+      return mainPath;
+    },
+  },
+  methods: {
+    choseItem(el) {
+      let currentPath = `${this.mainPath}${el.path}`;
+      let courseId = this.$route.params.id;
+      // Сделать проверку по regEx ??
+
+      if (currentPath !== this.$route.matched[4].path) {
+        this.$router.push({ name: `${el.pathName}`, params: { id: courseId } });
+      }
+    },
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div>
     Упс такой страницы нет :(
     <div class="go_home">Вернуться на главную</div>
   </div>
@@ -19,5 +19,8 @@ export default {};
     padding: 0.8em 1.2em;
     background-color: #6F6FF0;
   }
+}
+.active{
+  color: green;
 }
 </style>
