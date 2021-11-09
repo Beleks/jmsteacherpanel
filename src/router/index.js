@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '',
     name: 'Profile',
     component: () => import('../views/index.vue'),
     children: [
@@ -46,7 +46,6 @@ const routes = [
       { path: 'settings', component: () => import('../views/settings/Settings.vue') }
     ]
   },
-
   {
     path: '/about',
     name: 'About',
@@ -54,6 +53,10 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path: '*',
+    component: () => import('../views/404.vue')
   }
 ]
 

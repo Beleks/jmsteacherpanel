@@ -41,11 +41,18 @@ export default {
 
       let lastEl = this.$route.matched.length - 1;
       console.log(this.$route.matched);
-      if (this.$route.matched.length == 2) {
+      console.log(this.$route.matched[lastEl]);
+      
+      if (this.$route.matched[lastEl].path == "") {
+        // Перенос в beforMount
+        this.$router.replace({ path: "/profile" });
+      } else if (this.$route.matched[lastEl - 1].path == "") {
         return "MainMenu";
       } else if (this.$route.matched[lastEl].path == "/courses/:id") {
         return "CourseMenu";
-      } else if (this.$route.matched[lastEl-1].path == "/courses/:id/editor") {
+      } else if (
+        this.$route.matched[lastEl - 1].path == "/courses/:id/editor"
+      ) {
         return "EditorMenu";
       }
       // ========
