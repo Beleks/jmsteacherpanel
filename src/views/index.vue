@@ -42,9 +42,9 @@ export default {
       let lastEl = this.$route.matched.length - 1;
       console.log(this.$route.matched);
       console.log(this.$route.matched[lastEl]);
-      
+
       if (this.$route.matched[lastEl].path == "") {
-        // Перенос в beforMount
+        // Перенос в beforMount в app.vue
         this.$router.replace({ path: "/profile" });
       } else if (this.$route.matched[lastEl - 1].path == "") {
         return "MainMenu";

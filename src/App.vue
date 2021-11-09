@@ -10,8 +10,11 @@ export default {
     return {};
   },
   beforeMount() {
-    // if (this.$route.path == "/") {
-    //   console.log("Путь:", this.$route.path);
+    // let lastEl = this.$route.matched.length - 1;
+    // console.log(this.$route.matched);
+    // console.log(this.$route.matched[lastEl]);
+
+    // if (this.$route.matched[lastEl].path == "") {
     //   this.$router.replace({ path: "/profile" });
     // }
   },
