@@ -3,10 +3,13 @@
     <div class="back">
       <router-link to="/courses" tag="span"> Вернуться к курсу</router-link>
     </div>
-    <div v-for="(menuItem, index) in menuItems" :key="index" class="menuItem">
-      <div>
-        {{ menuItem.title }}
-      </div>
+    <div
+      v-for="(menuItem, index) in menuItems"
+      :key="index"
+      :class="{ menuItem, activeItem: menuItem.path === choseMenuItem }"
+      @click="choseItem(menuItem)"
+    >
+      <div>{{ menuItem.title }}</div>
     </div>
   </div>
 </template>
@@ -28,11 +31,32 @@ export default {
         },
         {
           title: "Содержание",
-          path: "/content",
+          path: "/tariffs",
           // svg: "SvgCourse",
         },
       ],
     };
+  },
+  computed: {
+    choseMenuItem() {
+      // Возвращает путь для проверки
+      let lastEl = this.$route.matched.length - 1;
+      return this.$route.matched[lastEl - 1].path;
+    },
+  },
+  methods: {
+    choseItem(el) {
+      let currentPath = `${this.choseMenuItem}${el.path}`;
+      let params = this.$route.params
+      console.log(`${this.choseMenuItem}${el.path}`, "метод перехода");
+      // Сделать проверку по regEx ?? 
+      
+      let lastEl = this.$route.matched.length - 1;
+      this.$route.matched[lastEl].path;
+      if (currentPath !== this.$route.matched[lastEl].path) {
+        this.$router.push({ path: currentPath, params });
+      }
+    },
   },
 };
 </script>

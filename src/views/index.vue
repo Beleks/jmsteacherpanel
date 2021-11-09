@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import MainMenu from "../components/Menus/MainMenu.vue";
-import CourseMenu from "../components/Menus/CourseMenu.vue";
-import EditorMenu from "../components/Menus/EditorMenu.vue";
+import MainMenu from "../components/menus/MainMenu.vue";
+import CourseMenu from "../components/menus/CourseMenu.vue";
+import EditorMenu from "../components/menus/EditorMenu.vue";
 
 export default {
   data() {
