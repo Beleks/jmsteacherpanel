@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      Модули
-      <!-- <Course/> -->
+      <div class="title">Содержание</div>
+      <Module/>
     </div>
     <div>
       <router-view></router-view>
@@ -11,10 +11,10 @@
 </template>
 
 <script>
-// import Course from '@/components/course/edit/content/Module.vue'
+import Module from '@/components/course/edit/content/Module.vue'
 export default {
   components: {
-    // Course
+    Module
   }
 }
 </script>
