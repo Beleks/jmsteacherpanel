@@ -1,5 +1,5 @@
 <template>
-  <div :class="{active: true}">
+  <div :class="{active: true}" class="main">
     Упс такой страницы нет :(
     <div class="go_home">Вернуться на главную</div>
   </div>
