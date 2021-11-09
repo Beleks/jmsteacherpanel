@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     Упс такой страницы нет :(
     <div class="go_home">Вернуться на главную</div>
   </div>
