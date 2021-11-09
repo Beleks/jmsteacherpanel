@@ -6,7 +6,7 @@
     <div
       v-for="(menuItem, index) in menuItems"
       :key="index"
-      :class="{ menuItem, activeItem: menuItem.path === choseMenuItem }"
+      :class="{ menuItem, activeItem: menuItem.path === mainPath }"
       @click="choseItem(menuItem)"
     >
       <div>{{ menuItem.title }}</div>
@@ -22,39 +22,39 @@ export default {
         {
           title: "Основная информация",
           path: "/main",
+          pathName: "mainEditor",
           // svg: "SvgCourse",
         },
         {
           title: "Содержание",
           path: "/content",
+          pathName: "mainContent",
           // svg: "SvgCourse",
         },
         {
           title: "Содержание",
           path: "/tariffs",
+          pathName: "mainTariffs",
           // svg: "SvgCourse",
         },
       ],
     };
   },
   computed: {
-    choseMenuItem() {
+    mainPath() {
       // Возвращает путь для проверки
-      let lastEl = this.$route.matched.length - 1;
-      return this.$route.matched[lastEl - 1].path;
+      let mainPath = this.$route.matched[3].path;
+      return mainPath;
     },
   },
   methods: {
     choseItem(el) {
-      let currentPath = `${this.choseMenuItem}${el.path}`;
-      let params = this.$route.params
-      console.log(`${this.choseMenuItem}${el.path}`, "метод перехода");
-      // Сделать проверку по regEx ?? 
-      
-      let lastEl = this.$route.matched.length - 1;
-      this.$route.matched[lastEl].path;
-      if (currentPath !== this.$route.matched[lastEl].path) {
-        this.$router.push({ path: currentPath, params });
+      let currentPath = `${this.mainPath}${el.path}`;
+      let courseId = this.$route.params.id;
+      // Сделать проверку по regEx ??
+
+      if (currentPath !== this.$route.matched[4].path) {
+        this.$router.push({ name: `${el.pathName}`, params: { id: courseId } });
       }
     },
   },

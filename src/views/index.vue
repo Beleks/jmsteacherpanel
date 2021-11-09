@@ -53,7 +53,8 @@ export default {
       } else if (this.$route.matched[lastEl].path == "/courses/:id") {
         return "CourseMenu";
       } else if (
-        this.$route.matched[lastEl - 1].path == "/courses/:id/editor"
+        this.$route.matched[3].path == "/courses/:id/editor"
+        // + проверка на длину ??
       ) {
         return "EditorMenu";
       }
