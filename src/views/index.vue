@@ -44,7 +44,7 @@ export default {
       console.log(this.$route.matched[lastEl]);
       
       if (this.$route.matched[lastEl].path == "") {
-        // Перенос в beforMount
+        // Перенос в beforMount ?
         this.$router.replace({ path: "/profile" });
       } else if (this.$route.matched[lastEl - 1].path == "") {
         return "MainMenu";
