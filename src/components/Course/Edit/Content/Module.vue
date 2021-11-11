@@ -1,24 +1,22 @@
 <template>
   <div>
     <div class="icons">
-      <div>
-        <SvgTeacher></SvgTeacher>
+      <div class="icon">
+        <SvgTeacher/>
       </div>
-      <div>
-        <SvgTeacher></SvgTeacher>
+      <div class="icon">
+        <SvgAddModule/>
       </div>
     </div>
     
     <div class="module_heading">
-
+    <div class="module_title">Название модуля</div>
       <div class="icon">
-        <div class="module_title">Название модуля</div>
         <div>
-          <SvgTeacher></SvgTeacher>
+          <SvgArrow/>
         </div>
-
         <div class="icon">
-          <SvgTeacher></SvgTeacher>
+          <SvgTrash/>
         </div>
       </div>
     
@@ -26,25 +24,62 @@
       
     </div>
 
-    <div class="module_list">
-      <div class="module_list-item">
-      <div class="module_lesson-name">Название урока</div>
-      <div class="module_lesson-edit">редактировать</div>
-      <div class="icon">
-          <SvgTeacher></SvgTeacher>
-        </div>
+    <div class="module">
+      <div class="lesson">
+          <div class="icon">
+            <SvgTeacher/>
+          </div>
+          <div class="title">Название урока</div>
+          
+          <div class="edit">редактировать</div>
+          <div class="icon">
+              <SvgTrash/>
+          </div>
+      </div>
+      <div class="add_lesson_icons">
+        <div class="icon">
+              <SvgVideo/>
+          </div>
+          <div class="icon">
+              <SvgTask/>
+          </div>
+          <div class="icon">
+              <SvgEdit/>
+          </div>
+          <div class="icon">
+              <SvgVebinar/>
+              
+          </div>
       </div>
     </div>
+    
   </div>
 </template>
 
 <script>
 import SvgTeacher from "@/components/svg/SvgTeacher.vue";
+import SvgAddModule from "@/components/svg/SvgAddModule.vue";
+import SvgTrash from "@/components/svg/SvgTrash.vue";
+import SvgArrow from "@/components/svg/SvgArrow.vue";
+import SvgVideo from "@/components/svg/SvgVideo.vue";
+import SvgTask from "@/components/svg/SvgTask.vue";
+import SvgEdit from "@/components/svg/SvgEdit.vue";
+import SvgVebinar from "@/components/svg/SvgVebinar.vue";
+
+
+
 // import SvgCourse from '../../../svg/'
 
 export default {
   components: {
     SvgTeacher,
+    SvgAddModule,
+    SvgTrash,
+    SvgArrow,
+    SvgVideo,
+    SvgTask,
+    SvgEdit,
+    SvgVebinar,
   },
 };
 </script>
