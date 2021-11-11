@@ -2,41 +2,49 @@
   <div>
     <div class="icons">
       <div>
-        <SvgCourse></SvgCourse>
+        <SvgTeacher></SvgTeacher>
       </div>
       <div>
-        <SvgCourse></SvgCourse>
+        <SvgTeacher></SvgTeacher>
       </div>
     </div>
-
+    
     <div class="module_heading">
 
       <div class="icon">
-        <div class="module_title"></div>
+        <div class="module_title">Название модуля</div>
         <div>
-          <SvgCourse></SvgCourse>
+          <SvgTeacher></SvgTeacher>
         </div>
 
         <div class="icon">
-          <SvgCourse></SvgCourse>
+          <SvgTeacher></SvgTeacher>
         </div>
       </div>
     
-      <div class="module_heading-capture"></div>
-      <div>
+      <div class="module_heading-capture">Добавить описание модуля</div>
       
+    </div>
+
+    <div class="module_list">
+      <div class="module_list-item">
+      <div class="module_lesson-name">Название урока</div>
+      <div class="module_lesson-edit">редактировать</div>
+      <div class="icon">
+          <SvgTeacher></SvgTeacher>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import SvgCourse from "@/components/svg/SvgCourse.vue";
+import SvgTeacher from "@/components/svg/SvgTeacher.vue";
 // import SvgCourse from '../../../svg/'
 
 export default {
   components: {
-    SvgCourse,
+    SvgTeacher,
   },
 };
 </script>
