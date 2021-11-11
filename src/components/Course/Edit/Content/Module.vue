@@ -1,57 +1,66 @@
 <template>
-  <div>
-    <div class="icons">
-      <div class="icon">
-        <SvgTeacher/>
-      </div>
-      <div class="icon">
-        <SvgAddModule/>
-      </div>
-    </div>
-    
+  <div class="module">
     <div class="module_heading">
-    <div class="module_title">Название модуля</div>
-      <div class="icon">
-        <div>
-          <SvgArrow/>
+
+      <div class="icons">
+        <div class="icon">
+          <SvgTeacher />
         </div>
         <div class="icon">
-          <SvgTrash/>
+          <SvgAddModule />
         </div>
       </div>
-    
-      <div class="module_heading-capture">Добавить описание модуля</div>
-      
-    </div>
 
-    <div class="module">
-      <div class="lesson">
+     
+      <div class="title-box">
+        <div>
+          <div class="module_title">Название модуля</div>
           <div class="icon">
-            <SvgTeacher/>
+            <SvgArrow />
           </div>
-          <div class="title">Название урока</div>
-          
-          <div class="edit">редактировать</div>
+        </div>
           <div class="icon">
-              <SvgTrash/>
+            <SvgTrash />
           </div>
+      
+        </div>
+      
+
+      <div class="module_heading-capture">Добавить описание модуля</div>
+    </div>
+      <div class="module_list">
+       <div class="lesson">
+        <div class="icon">
+          <SvgTeacher />
+        </div>
+
+        <div class="lesson_content">
+        <div class="icon">
+          <SvgVideo />
+        </div>
+        <div class="title">Название урока</div>
+
+        <div class="edit">редактировать</div>
+        <div class="icon">
+          <SvgTrash />
+        </div>
+        </div>
       </div>
+
       <div class="add_lesson_icons">
         <div class="icon">
-              <SvgVideo/>
-          </div>
-          <div class="icon">
-              <SvgTask/>
-          </div>
-          <div class="icon">
-              <SvgEdit/>
-          </div>
-          <div class="icon">
-              <SvgVebinar/>
-              
-          </div>
+          <SvgVideo />
+        </div>
+        <div class="icon">
+          <SvgTask />
+        </div>
+        <div class="icon">
+          <SvgEdit />
+        </div>
+        <div class="icon">
+          <SvgVebinar />
+        </div>
       </div>
-    </div>
     
   </div>
 </template>
@@ -65,8 +74,6 @@ import SvgVideo from "@/components/svg/SvgVideo.vue";
 import SvgTask from "@/components/svg/SvgTask.vue";
 import SvgEdit from "@/components/svg/SvgEdit.vue";
 import SvgVebinar from "@/components/svg/SvgVebinar.vue";
-
-
 
 // import SvgCourse from '../../../svg/'
 
