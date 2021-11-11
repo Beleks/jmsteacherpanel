@@ -55,7 +55,7 @@ export default {
       let currentPath = `${this.mainPath}${el.path}`;
       let courseId = this.$route.params.id;
       // Сделать проверку по regEx ??
-
+      
       if (currentPath !== this.$route.matched[4].path) {
         this.$router.push({ name: `${el.pathName}`, params: { id: courseId } });
       }

@@ -51,13 +51,7 @@ import SvgLamp from "../../components/svg/SvgLamp.vue";
 
 export default {
   data() {
-    return {
-      courses: [
-        { id: "6", title: "Курс от Профи до 0" },
-        { id: "2", title: "Курс от Профи до 0" },
-        { id: "3", title: "Курс от Профи до 0" },
-      ],
-    };
+    return {};
   },
   computed: {
     path() {
@@ -67,6 +61,10 @@ export default {
       } else {
         return false;
       }
+    },
+    courses() {
+      // Получать только title, id
+      return this.$store.state.courses;
     },
   },
   methods: {

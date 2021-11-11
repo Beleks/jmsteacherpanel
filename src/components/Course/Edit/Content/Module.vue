@@ -35,6 +35,7 @@ import SvgCourse from "@/components/svg/SvgCourse.vue";
 // import SvgCourse from '../../../svg/'
 
 export default {
+  
   components: {
     SvgCourse,
   },
