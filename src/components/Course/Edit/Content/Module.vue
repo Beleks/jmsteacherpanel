@@ -1,40 +1,50 @@
 <template>
-  <div>
-    <div class="icons">
-      <div class="icon">
-        <SvgTeacher />
-      </div>
-      <div class="icon">
-        <SvgAddModule />
-      </div>
-    </div>
-
+  <div class="module">
     <div class="module_heading">
-      <div class="module_title">{{ module.title }}</div>
-      <div class="icon">
-        <div>
-          <SvgArrow />
+      <div class="icons">
+        <div class="icon">
+          <SvgTeacher />
         </div>
         <div class="icon">
-          <SvgTrash />
+          <SvgAddModule />
         </div>
       </div>
 
-      <div class="module_heading-capture">Добавить описание модуля</div>
-    </div>
+      <div class="full-heading">
+        <div class="title-box">
+          <div class="title-innerbox">
+            <div class="module_title">Название модуля</div>
+            <div class="icon">
+              <SvgArrow />
+            </div>
+          </div>
+          <div class="icon">
+            <SvgTrash />
+          </div>
+        </div>
 
-    <div class="module">
+        <div class="module_heading-capture">Добавить описание модуля</div>
+      </div>
+    </div>
+    <div class="module_list">
       <div class="lesson">
         <div class="icon">
           <SvgTeacher />
         </div>
-        <div class="title">Название урока</div>
 
-        <div class="edit">редактировать</div>
-        <div class="icon">
-          <SvgTrash />
+        <div class="lesson_content">
+          <div class="icon">
+            <SvgVideo />
+          </div>
+          <div class="title">Название урока</div>
+
+          <div class="edit">редактировать</div>
+          <div class="icon">
+            <SvgTrash />
+          </div>
         </div>
       </div>
+
       <div class="add_lesson_icons">
         <div class="icon">
           <SvgVideo />
