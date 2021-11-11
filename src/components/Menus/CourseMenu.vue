@@ -8,11 +8,13 @@
         {{ menuItem.title }}
       </div>
     </div>
-    <div class="editButton">
-      <router-link :to="`/courses/${idCourse}/editor/main`" tag="span"
-        >Редактировать</router-link
-      >
-    </div>
+    <router-link
+      class="editButton"
+      :to="`/courses/${idCourse}/editor/main`"
+      tag="div"
+    >
+      Редактировать
+    </router-link>
   </div>
 </template>
 
@@ -30,9 +32,9 @@ export default {
     };
   },
   computed: {
-    idCourse(){
-      return this.$route.params.id
-    }
+    idCourse() {
+      return this.$route.params.id;
+    },
   },
 };
 </script>

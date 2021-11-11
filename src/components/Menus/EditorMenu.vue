@@ -6,7 +6,11 @@
     <div
       v-for="(menuItem, index) in menuItems"
       :key="index"
-      :class="{ menuItem, activeItem: menuItem.path === mainPath }"
+      :class="{
+        menuItem,
+        activeItem:
+          `${mainPath}${menuItem.path}` === `${$route.matched[4].path}`,
+      }"
       @click="choseItem(menuItem)"
     >
       <div>{{ menuItem.title }}</div>
@@ -43,8 +47,7 @@ export default {
   computed: {
     mainPath() {
       // Возвращает путь для проверки
-      let mainPath = this.$route.matched[3].path;
-      return mainPath;
+      return this.$route.matched[3].path;
     },
   },
   methods: {
@@ -52,7 +55,7 @@ export default {
       let currentPath = `${this.mainPath}${el.path}`;
       let courseId = this.$route.params.id;
       // Сделать проверку по regEx ??
-
+      
       if (currentPath !== this.$route.matched[4].path) {
         this.$router.push({ name: `${el.pathName}`, params: { id: courseId } });
       }
@@ -87,10 +90,9 @@ export default {
   color: #6f6ff0ab;
 }
 .activeItem {
-  background-color: #6f6ff0;
-  color: #f1f1fd;
+  color: #6f6ff0;
 }
 .activeItem:hover {
-  background-color: #6f6ff0;
+  // background-color: #6f6ff0;
 }
 </style>

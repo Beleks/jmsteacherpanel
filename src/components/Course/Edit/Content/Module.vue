@@ -71,6 +71,7 @@ import SvgVebinar from "@/components/svg/SvgVebinar.vue";
 // import SvgCourse from '../../../svg/'
 
 export default {
+  
   components: {
     SvgTeacher,
     SvgAddModule,
