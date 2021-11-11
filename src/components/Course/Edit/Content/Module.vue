@@ -12,8 +12,8 @@
 
       <div class="full-heading">
         <div class="title-box">
-          <div class="title-innerbox">
-            <div class="module_title">Название модуля</div>
+          <div class="title_inner-box">
+            <div class="module_title">Название&nbsp;модуля</div>
             <div class="icon">
               <SvgArrow />
             </div>
@@ -76,7 +76,6 @@ import SvgVebinar from "@/components/svg/SvgVebinar.vue";
 // import SvgCourse from '../../../svg/'
 
 export default {
-  
   components: {
     SvgTeacher,
     SvgAddModule,
@@ -91,4 +90,74 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.module {
+   max-width: 1074px;
+  margin: 0 auto;
+  
+}
+
+.module_heading {
+  display: flex;
+  flex-direction: row;
+}
+
+.full-heading {
+  display: flex;
+  flex-direction: column;
+  // max-width: 1002px;
+  width: 100%;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  max-width: 72px;
+  margin-top: 9px;
+  .icon {
+    margin-right: 15px;
+  }
+}
+
+.title-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  max-width: 1002px;
+  background-color: #F1F1FE;
+  border-radius: 5px;
+  min-height: 39px;
+  .icon {
+    margin-right: 9px;
+  }
+}
+
+.title_inner-box {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  max-width: 178px;
+}
+
+.module_title {
+  width: 150px;
+  display: block;
+  margin: 0 10px 0 15px;
+  font-family: "Roboto Medium";
+  font-style: normal;
+  font-size: 18px;
+  line-height: 21px;
+  
+}
+
+.module_heading-capture {
+  display: block;
+  margin: 0 0 0 15px;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: regular;
+  color: #2b2d42;
+  opacity: 0.8;
+}
 </style>
