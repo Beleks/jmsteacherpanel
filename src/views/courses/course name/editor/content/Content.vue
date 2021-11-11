@@ -2,7 +2,7 @@
   <div>
     <div>
       <div class="title">Содержание курса {{ courseId }}</div>
-      <Module v-for="(module, index) in courseModules" :key="index" />
+      <Module v-for="(module, index) in courseModules" :key="index" :module="module"/>
     </div>
     <div>
       <router-view></router-view>
