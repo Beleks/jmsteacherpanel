@@ -69,14 +69,45 @@ export default new Vuex.Store({
   },
   mutations: {
     addModule(state, params) {
-      let variableCourse = state.courses.find(course => course.id == params.id)
-      variableCourse.content.push(params.newModule)
+      // Сделать добавление модуля через splice когда будем использвать index
+      let variableCourse = state.courses.find(course => course.id == params.courseId)
+      let newId
+      if (variableCourse.content.length === 0) {
+        newId = '100'
+      } else {
+        let lastChildIndex = variableCourse.content.length - 1
+        newId = Number(variableCourse.content[lastChildIndex].id) + 1
+      }
+      let title = params.newModule.title
+      let newModule = {
+        id: newId,
+        title,
+        group: '',
+        tariffs: '',
+        desc: '',
+        lessons: []
+      }
+      variableCourse.content.push(newModule)
     },
     deleteModule(state, params) {
-      let variableCourse = state.courses.find(course => course.id == params.idCourse)
-      let selectedModuleIndex = variableCourse.content.findIndex(module => module.id == params.idModule)
+      let variableCourse = state.courses.find(course => course.id == params.courseId)
+      let selectedModuleIndex = variableCourse.content.findIndex(module => module.id == params.moduleId)
       variableCourse.content.splice(selectedModuleIndex, 1)
+    },
+    addLesson(state, params) {
+      // метод должен быть и для вставки в определенное место и для вставки в конец
+      // id курса ? индекс модуля ? индекс урока ?
+      let variableCourse = state.courses.find(course => course.id == params.courseId)
+      variableCourse.content[params.moduleIndex].lessons.splice(params.lessonIndex, 0, params.newLesson)
+    },
+    deletLesson(state, params) {
+      // можем ли разделить данные ? (таблица куросв отедельно от контента)
+      // id курса ? индекс модуля ? индекс урока ?
+      // 
+      let variableCourse = state.courses.find(course => course.id == params.courseId)
+      variableCourse.content[params.moduleIndex].lessons.splice(params.lessonIndex, 1)
     }
+
   },
   actions: {
   },

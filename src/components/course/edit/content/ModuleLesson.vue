@@ -4,16 +4,14 @@
       <div class="lesson-icon">
         <SvgTeacher />
       </div>
-
-      <div class="content">
-        <div class="inner-box">
+      <div class="inner-box">
+        <div class="box">
           <div class="icon">
             <SvgVideo />
           </div>
           <div class="title">{{lesson.title}}</div>
           <div class="edit">редактировать</div>
         </div>
-
         <div class="icon">
           <SvgTrash />
         </div>
@@ -29,7 +27,7 @@ import SvgTrash from "@/components/svg/SvgTrash.vue";
 
 export default {
   props: {
-    lesson: Object
+    lesson: Object,
   },
   components: {
     SvgTeacher,
@@ -40,29 +38,45 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.icon{
+.icon {
   cursor: pointer;
 }
 .lesson {
   display: flex;
-  flex-direction: row;
-  max-width: 100%;
+  margin-bottom: 10px;
 }
 
-.lesson_icon {
-  margin-right: 15px;
-}
-
-.content {
-  display: flex;
-  flex-direction: row;
-  max-width: 100%;
+.lesson-icon {
+  padding-right: 1em;
+  padding-top: 0.4em;
 }
 
 .inner-box {
+  font-family: "Roboto Regular";
+  width: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  max-width: 100%;
+  align-items: center;
+  background-color: #f1f1fe;
+  padding: 0.4em 1em;
+  border-radius: 5px;
+  .icon:first-child {
+    margin-right: 1em;
+  }
+  .title {
+    margin-right: 1.2em;
+  }
 }
+
+.box {
+  display: flex;
+  align-items: center;
+}
+
+.edit {
+  font-size: 0.8rem;
+  color: #8989f3;
+  cursor: pointer;
+}
+/* LESSON end */
 </style>

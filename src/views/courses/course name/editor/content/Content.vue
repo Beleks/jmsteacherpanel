@@ -6,6 +6,8 @@
         v-for="(module, index) in courseModules.content"
         :key="index"
         :module="module"
+        :indexModule="index"
+        :courseId="courseId"
         @deleteModule="deleteModule"
       />
       <div class="create_module">
@@ -48,21 +50,19 @@ export default {
     },
   },
   methods: {
-    addByEnter() {
-    },
     addModule() {
       // Убрать переменные ?
       let title = this.moduleTitle;
-      let id = this.courseId;
+      let courseId = this.courseId;
       let newModule = {
         title,
       };
-      this.$store.commit("addModule", { id, newModule });
+      this.$store.commit("addModule", { courseId, newModule });
       this.moduleTitle = "";
     },
-    deleteModule: function (idModule) {
-      let idCourse = this.courseId;
-      this.$store.commit("deleteModule", { idCourse, idModule });
+    deleteModule: function (moduleId) {
+      let courseId = this.courseId;
+      this.$store.commit("deleteModule", { courseId, moduleId });
     },
   },
   components: {
