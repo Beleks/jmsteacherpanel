@@ -13,7 +13,6 @@ export default {
     // let lastEl = this.$route.matched.length - 1;
     // console.log(this.$route.matched);
     // console.log(this.$route.matched[lastEl]);
-
     // if (this.$route.matched[lastEl].path == "") {
     //   this.$router.replace({ path: "/profile" });
     // }
@@ -47,5 +46,8 @@ export default {
 }
 html {
   background-color: #fcfcff;
+}
+input {
+  all: unset;
 }
 </style>

@@ -13,12 +13,12 @@
       <div class="full-heading">
         <div class="title-box">
           <div class="title_inner-box">
-            <div class="module_title">Название&nbsp;модуля</div>
+            <div class="module_title">{{module.title}}</div>
             <div class="icon">
               <SvgArrow />
             </div>
           </div>
-          <div class="icon">
+          <div class="icon" @click="deleteModule()">
             <SvgTrash />
           </div>
         </div>
@@ -62,6 +62,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -78,6 +79,20 @@ import SvgVebinar from "@/components/svg/SvgVebinar.vue";
 // import SvgCourse from '../../../svg/'
 
 export default {
+  props: {
+    module: Object,
+  },
+  data() {
+    return {};
+  },
+  computed: {},
+  methods: {
+    // редактирование названия модуля
+    deleteModule(){
+      console.log('moduleVue');
+      this.$emit('deleteModule', this.module.id)
+    }
+  },
   components: {
     SvgTeacher,
     SvgAddModule,
