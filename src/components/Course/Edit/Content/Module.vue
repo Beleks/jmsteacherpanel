@@ -22,41 +22,43 @@
             <SvgTrash />
           </div>
         </div>
-
         <div class="module_heading-capture">Добавить описание модуля</div>
-      </div>
-    </div>
-    <div class="module_list">
-      <div class="lesson">
-        <div class="icon">
-          <SvgTeacher />
-        </div>
 
-        <div class="lesson_content">
-          <div class="icon">
-            <SvgVideo />
+        <div class="module_list">
+          <div class="lesson">
+            <div class="lesson-icon">
+              <SvgTeacher />
+            </div>
+
+            <div class="content">
+              <div class="inner-box">
+                <div class="icon">
+                  <SvgVideo />
+                </div>
+                <div class="title">Название урока</div>
+                <div class="edit">редактировать</div>
+              </div>
+
+              <div class="icon">
+                <SvgTrash />
+              </div>
+            </div>
           </div>
-          <div class="title">Название урока</div>
 
-          <div class="edit">редактировать</div>
-          <div class="icon">
-            <SvgTrash />
+          <div class="add_lesson_icons">
+            <div class="icon">
+              <SvgVideo />
+            </div>
+            <div class="icon">
+              <SvgTask />
+            </div>
+            <div class="icon">
+              <SvgEdit />
+            </div>
+            <div class="icon">
+              <SvgVebinar />
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div class="add_lesson_icons">
-        <div class="icon">
-          <SvgVideo />
-        </div>
-        <div class="icon">
-          <SvgTask />
-        </div>
-        <div class="icon">
-          <SvgEdit />
-        </div>
-        <div class="icon">
-          <SvgVebinar />
         </div>
       </div>
     </div>
@@ -91,9 +93,8 @@ export default {
 
 <style lang="scss" scoped>
 .module {
-   max-width: 1074px;
+  max-width: 1074px;
   margin: 0 auto;
-  
 }
 
 .module_heading {
@@ -125,7 +126,7 @@ export default {
   align-items: center;
   margin-bottom: 10px;
   max-width: 1002px;
-  background-color: #F1F1FE;
+  background-color: #f1f1fe;
   border-radius: 5px;
   min-height: 39px;
   .icon {
@@ -148,7 +149,6 @@ export default {
   font-style: normal;
   font-size: 18px;
   line-height: 21px;
-  
 }
 
 .module_heading-capture {
@@ -160,4 +160,49 @@ export default {
   color: #2b2d42;
   opacity: 0.8;
 }
+
+/* MODULE_LIST start*/
+
+.module_list {
+  max-width: 1002px;
+  
+}
+
+/* LESSON start */
+.lesson {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+}
+
+.lesson_icon {
+  margin-right: 15px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+}
+
+.inner-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+/* LESSON end */
+
+.add_lesson_icons {
+  margin-left: 51px;
+  display: flex;
+  flex-direction: row;
+
+  .icon {
+    margin-right: 20px;
+  }
+}
+
+/* MODULE_LIST end*/
 </style>
