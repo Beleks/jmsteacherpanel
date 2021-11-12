@@ -6,7 +6,7 @@
         v-for="(module, index) in courseModules.content"
         :key="index"
         :module="module"
-        :indexModule="index"
+        :moduleIndex="index"
         :courseId="courseId"
         @deleteModule="deleteModule"
       />

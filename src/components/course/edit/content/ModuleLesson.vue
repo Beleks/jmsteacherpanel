@@ -9,10 +9,10 @@
           <div class="icon">
             <SvgVideo />
           </div>
-          <div class="title">{{lesson.title}}</div>
+          <div class="title">{{ lesson.title }}</div>
           <div class="edit">редактировать</div>
         </div>
-        <div class="icon">
+        <div class="icon" @click="deleteLesson()">
           <SvgTrash />
         </div>
       </div>
@@ -28,6 +28,12 @@ import SvgTrash from "@/components/svg/SvgTrash.vue";
 export default {
   props: {
     lesson: Object,
+    lessonIndex: Number,
+  },
+  methods: {
+    deleteLesson() {
+      this.$emit("deleteLesson", this.lessonIndex);
+    },
   },
   components: {
     SvgTeacher,

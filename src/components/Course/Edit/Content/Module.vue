@@ -29,6 +29,8 @@
             v-for="(lesson, index) in module.lessons"
             :key="index"
             :lesson="lesson"
+            :lessonIndex="index"
+            @deleteLesson="deleteLesson"
           />
 
           <div class="add_lesson_icons">
@@ -68,7 +70,8 @@ import SvgVebinar from "@/components/svg/SvgVebinar.vue";
 export default {
   props: {
     module: Object,
-    indexModule: Number
+    moduleIndex: Number,
+    courseId: String,
   },
   data() {
     return {};
@@ -79,13 +82,16 @@ export default {
     deleteModule() {
       this.$emit("deleteModule", this.module.id);
     },
-    addLesson(){
-      
-      this.$store.commit("addLesson", )
+    addLesson() {
+      this.$store.commit("addLesson", {});
     },
-    deleteLesson(){
-
-    }
+    deleteLesson: function(lessonIndex) {
+      this.$store.commit("deleteLesson", {
+        courseId: this.courseId,
+        moduleIndex: this.moduleIndex,
+        lessonIndex
+      });
+    },
   },
   components: {
     ModuleLesson,

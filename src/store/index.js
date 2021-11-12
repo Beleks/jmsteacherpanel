@@ -96,11 +96,13 @@ export default new Vuex.Store({
     },
     addLesson(state, params) {
       // метод должен быть и для вставки в определенное место и для вставки в конец
-      // id курса ? индекс модуля ? индекс урока ?
+      // newLesson {id курса ? индекс модуля ? индекс урока ?}
+      // Создовать title по умолчанию в зависимости от типа урока ->
+      // Потом title можно изменить (цвет серый)
       let variableCourse = state.courses.find(course => course.id == params.courseId)
       variableCourse.content[params.moduleIndex].lessons.splice(params.lessonIndex, 0, params.newLesson)
     },
-    deletLesson(state, params) {
+    deleteLesson(state, params) {
       // можем ли разделить данные ? (таблица куросв отедельно от контента)
       // id курса ? индекс модуля ? индекс урока ?
       // 
