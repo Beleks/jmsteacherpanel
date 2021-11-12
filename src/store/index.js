@@ -64,14 +64,19 @@ export default new Vuex.Store({
   },
   getters: {
     currentCourse: state => id => {
-      return state.courses.filter(course => course.id == id)
+      return state.courses.filter(course => course.id == id)[0]
     }
   },
   mutations: {
-    // Добавление/удаление модуля
-    // Добавление/Удаление урока
-
-    // mapGet пердаем (id) в mapget ?
+    addModule(state, params) {
+      let variableCourse = state.courses.find(course => course.id == params.id)
+      variableCourse.content.push(params.newModule)
+    },
+    deleteModule(state, params) {
+      let variableCourse = state.courses.find(course => course.id == params.idCourse)
+      let selectedModuleIndex = variableCourse.content.findIndex(module => module.id == params.idModule)
+      variableCourse.content.splice(selectedModuleIndex, 1)
+    }
   },
   actions: {
   },

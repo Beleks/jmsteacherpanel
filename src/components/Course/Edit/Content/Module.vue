@@ -13,12 +13,12 @@
       <div class="full-heading">
         <div class="title-box">
           <div class="title-innerbox">
-            <div class="module_title">Название модуля</div>
+            <div class="module_title">{{module.title}}</div>
             <div class="icon">
               <SvgArrow />
             </div>
           </div>
-          <div class="icon">
+          <div class="icon" @click="deleteModule()">
             <SvgTrash />
           </div>
         </div>
@@ -60,6 +60,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -84,9 +85,11 @@ export default {
   },
   computed: {},
   methods: {
-    addModule() {},
-    deletModule() {},
     // редактирование названия модуля
+    deleteModule(){
+      console.log('moduleVue');
+      this.$emit('deleteModule', this.module.id)
+    }
   },
   components: {
     SvgTeacher,
