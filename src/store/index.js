@@ -20,13 +20,13 @@ export default new Vuex.Store({
               {
                 id: '1000',
                 type: 'video',
-                title: 'Название урока',
+                title: 'Vuex - централизованное хранилище данных',
                 access: 'tarif_1',
               },
               {
-                id: '1000',
+                id: '1001',
                 type: 'test',
-                title: 'Название урока',
+                title: 'Vue-Route во всей красе',
                 access: 'tarif_1',
               },
             ]
@@ -51,9 +51,9 @@ export default new Vuex.Store({
                 access: 'tarif_1',
               },
               {
-                id: '1000',
+                id: '1001',
                 type: 'test',
-                title: 'Название урока',
+                title: 'Vue route во всей красе',
                 access: 'tarif_1',
               },
             ]

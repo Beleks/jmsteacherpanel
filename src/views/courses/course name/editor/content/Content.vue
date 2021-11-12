@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="main">
       <div class="title">Содержание курса {{ courseId }}</div>
       <Module
         v-for="(module, index) in courseModules.content"
@@ -14,7 +14,11 @@
         </div>
         <div class="module_title">
           <!-- input -->
-          <input v-model="moduleTitle" placeholder="Название модуля" />
+          <input
+            v-model="moduleTitle"
+            placeholder="Название модуля"
+            @keyup.enter="addModule()"
+          />
           <!-- <div class="bg_title" v-show="!moduleTitle">Название модуля</div> -->
         </div>
       </div>
@@ -44,12 +48,12 @@ export default {
     },
   },
   methods: {
+    addByEnter() {
+    },
     addModule() {
       // Убрать переменные ?
       let title = this.moduleTitle;
       let id = this.courseId;
-      console.log(id);
-
       let newModule = {
         title,
       };
@@ -57,7 +61,6 @@ export default {
       this.moduleTitle = "";
     },
     deleteModule: function (idModule) {
-      console.log('есть контакт');
       let idCourse = this.courseId;
       this.$store.commit("deleteModule", { idCourse, idModule });
     },
@@ -70,6 +73,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.main {
+  max-width: 1074px;
+  margin: 0 auto;
+  .title {
+    margin-bottom: 1.8em;
+  }
+}
 .create_module {
   display: flex;
   align-items: center;
@@ -80,6 +90,9 @@ export default {
     margin-left: 15px;
     position: relative;
     min-width: 100%;
+    input {
+      width: 300px;
+    }
   }
 }
 </style>

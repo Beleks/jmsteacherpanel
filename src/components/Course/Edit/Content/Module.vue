@@ -13,7 +13,7 @@
       <div class="full-heading">
         <div class="title-box">
           <div class="title_inner-box">
-            <div class="module_title">{{module.title}}</div>
+            <div class="module_title">{{ module.title }}</div>
             <div class="icon">
               <SvgArrow />
             </div>
@@ -25,7 +25,12 @@
         <div class="module_heading-capture">Добавить описание модуля</div>
 
         <div class="module_list">
-          <div class="lesson">
+          <ModuleLesson
+            v-for="(lesson, index) in module.lessons"
+            :key="index"
+            :lesson="lesson"
+          />
+          <!-- <div class="lesson">
             <div class="lesson-icon">
               <SvgTeacher />
             </div>
@@ -43,7 +48,7 @@
                 <SvgTrash />
               </div>
             </div>
-          </div>
+          </div> -->
 
           <div class="add_lesson_icons">
             <div class="icon">
@@ -62,11 +67,12 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
+import ModuleLesson from "./ModuleLesson.vue";
+//
 import SvgTeacher from "@/components/svg/SvgTeacher.vue";
 import SvgAddModule from "@/components/svg/SvgAddModule.vue";
 import SvgTrash from "@/components/svg/SvgTrash.vue";
@@ -88,12 +94,12 @@ export default {
   computed: {},
   methods: {
     // редактирование названия модуля
-    deleteModule(){
-      console.log('moduleVue');
-      this.$emit('deleteModule', this.module.id)
-    }
+    deleteModule() {
+      this.$emit("deleteModule", this.module.id);
+    },
   },
   components: {
+    ModuleLesson,
     SvgTeacher,
     SvgAddModule,
     SvgTrash,
@@ -107,9 +113,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.icon {
+  cursor: pointer;
+}
+
 .module {
-  max-width: 1074px;
-  margin: 0 auto;
+  margin-bottom: 1.8em;
 }
 
 .module_heading {
@@ -153,7 +162,6 @@ export default {
   align-items: center;
   display: flex;
   flex-direction: row;
-  max-width: 178px;
 }
 
 .module_title {
@@ -180,7 +188,6 @@ export default {
 
 .module_list {
   max-width: 1002px;
-  
 }
 
 /* LESSON start */
