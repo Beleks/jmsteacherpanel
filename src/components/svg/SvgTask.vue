@@ -53,6 +53,9 @@ export default {};
 
 <style lang="scss" scoped>
 div {
+   display: flex;
+  align-content: center;
+  justify-content: center;
   height: 24px;
   width: 24px;
   padding: 0;

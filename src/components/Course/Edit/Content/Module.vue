@@ -34,16 +34,14 @@
             <div class="lesson-icon">
               <SvgTeacher />
             </div>
-
-            <div class="content">
-              <div class="inner-box">
+            <div class="inner-box">
+              <div class="box">
                 <div class="icon">
                   <SvgVideo />
                 </div>
                 <div class="title">Название урока</div>
                 <div class="edit">редактировать</div>
               </div>
-
               <div class="icon">
                 <SvgTrash />
               </div>
@@ -137,7 +135,7 @@ export default {
   display: flex;
   flex-direction: row;
   max-width: 72px;
-  margin-top: 9px;
+  margin-top: 0.5em;
   .icon {
     margin-right: 15px;
   }
@@ -152,10 +150,7 @@ export default {
   max-width: 1002px;
   background-color: #f1f1fe;
   border-radius: 5px;
-  min-height: 39px;
-  .icon {
-    margin-right: 9px;
-  }
+  padding: 0.5em 1em;
 }
 
 .title_inner-box {
@@ -165,9 +160,8 @@ export default {
 }
 
 .module_title {
-  width: 150px;
   display: block;
-  margin: 0 10px 0 15px;
+  margin-right: 15px;
   font-family: "Roboto Medium";
   font-style: normal;
   font-size: 18px;
@@ -176,7 +170,7 @@ export default {
 
 .module_heading-capture {
   display: block;
-  margin: 0 0 0 15px;
+  margin: 0 0 20px 15px;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: regular;
@@ -194,30 +188,53 @@ export default {
 .lesson {
   display: flex;
   flex-direction: row;
-  max-width: 100%;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-.lesson_icon {
-  margin-right: 15px;
-}
-
-.content {
-  display: flex;
-  flex-direction: row;
-  max-width: 100%;
+.lesson-icon {
+  padding-right: 1em;
+  padding-top: 0.3em;
 }
 
 .inner-box {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-width: 100%;
+  align-items: center;
+  background-color: #f1f1fe;
+  padding: 0.4em 0;
+  border-radius: 5px;
+
+  .icon {
+    margin: 0 1em;
+  }
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.title {
+  display: block;
+  margin-right: 1.2em;
+  font-size: 1rem;
+  font-family: "Roboto Regular";
+}
+
+.edit {
+  font-family: "Roboto Regular";
+  font-size: 0.8rem;
+  color: #8989f3;
 }
 
 /* LESSON end */
 
 .add_lesson_icons {
-  margin-left: 51px;
+  margin-left: 3.5em;
   display: flex;
   flex-direction: row;
 
