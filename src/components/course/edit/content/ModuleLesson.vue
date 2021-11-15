@@ -1,20 +1,21 @@
 <template>
-  <div>
-    <div class="lesson">
-      <div class="lesson-icon">
-        <SvgTeacher />
+  <div class="lesson">
+    <div class="icon_move">
+      <SvgMove />
+    </div>
+    <div class="lesson-icon">
+      <SvgTeacher />
+    </div>
+    <div class="inner-box">
+      <div class="box">
+        <div class="icon">
+          <SvgVideo />
+        </div>
+        <div class="title">{{ lesson.title }}</div>
+        <div class="edit">редактировать</div>
       </div>
-      <div class="inner-box">
-        <div class="box">
-          <div class="icon">
-            <SvgVideo />
-          </div>
-          <div class="title">{{ lesson.title }}</div>
-          <div class="edit">редактировать</div>
-        </div>
-        <div class="icon" @click="deleteLesson()">
-          <SvgTrash />
-        </div>
+      <div class="icon" @click="deleteLesson()">
+        <SvgTrash />
       </div>
     </div>
   </div>
@@ -24,6 +25,7 @@
 import SvgTeacher from "@/components/svg/SvgTeacher.vue";
 import SvgVideo from "@/components/svg/SvgVideo.vue";
 import SvgTrash from "@/components/svg/SvgTrash.vue";
+import SvgMove from "@/components/svg/SvgMove.vue";
 
 export default {
   props: {
@@ -39,6 +41,7 @@ export default {
     SvgTeacher,
     SvgVideo,
     SvgTrash,
+    SvgMove,
   },
 };
 </script>
@@ -50,6 +53,7 @@ export default {
 .lesson {
   display: flex;
   margin-bottom: 10px;
+  position: relative;
 }
 
 .lesson-icon {
@@ -83,6 +87,12 @@ export default {
   font-size: 0.8rem;
   color: #8989f3;
   cursor: pointer;
+}
+
+.icon_move {
+  position: absolute;
+  left: -36px;
+  padding-top: 0.4em;
 }
 /* LESSON end */
 </style>

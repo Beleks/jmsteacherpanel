@@ -2,6 +2,9 @@
   <div class="module">
     <div class="module_heading">
       <div class="icons">
+        <div class="icon_move">
+          <SvgMove />
+        </div>
         <div class="icon">
           <SvgTeacher />
         </div>
@@ -64,6 +67,8 @@ import SvgVideo from "@/components/svg/SvgVideo.vue";
 import SvgTask from "@/components/svg/SvgTask.vue";
 import SvgEdit from "@/components/svg/SvgEdit.vue";
 import SvgVebinar from "@/components/svg/SvgVebinar.vue";
+import SvgMove from "@/components/svg/SvgMove.vue";
+import SvgCross from "@/components/svg/SvgCross.vue";
 
 // import SvgCourse from '../../../svg/'
 
@@ -85,11 +90,11 @@ export default {
     addLesson() {
       this.$store.commit("addLesson", {});
     },
-    deleteLesson: function(lessonIndex) {
+    deleteLesson: function (lessonIndex) {
       this.$store.commit("deleteLesson", {
         courseId: this.courseId,
         moduleIndex: this.moduleIndex,
-        lessonIndex
+        lessonIndex,
       });
     },
   },
@@ -103,11 +108,16 @@ export default {
     SvgTask,
     SvgEdit,
     SvgVebinar,
+    SvgMove,
+    SvgCross,
   },
 };
 </script>
 
 <style lang="scss" scoped>
+
+
+// ============
 .icon {
   cursor: pointer;
 }
@@ -119,6 +129,7 @@ export default {
 .module_heading {
   display: flex;
   flex-direction: row;
+  // position: relative;
 }
 
 .full-heading {
@@ -132,6 +143,7 @@ export default {
   flex-direction: row;
   max-width: 72px;
   margin-top: 0.5em;
+  position: relative;
   .icon {
     margin-right: 15px;
   }
@@ -164,7 +176,7 @@ export default {
 }
 
 .module_heading-capture {
-  display: block;
+  // display: block;
   margin: 0 0 20px 15px;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
@@ -180,6 +192,12 @@ export default {
     margin-right: 20px;
   }
 }
+
+.icon_move {
+  position: absolute;
+  left: -36px;
+}
+
 /* MODULE_LIST end*/
 
 /* LESSON start */

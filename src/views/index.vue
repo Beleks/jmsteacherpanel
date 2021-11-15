@@ -1,24 +1,26 @@
 <template>
-  <div class="container">
-    <div class="menu">
-      <div class="header">
-        <div>JMS</div>
-        <div>teacher</div>
+  <div>
+    <div class="container">
+      <div class="menu">
+        <div class="header">
+          <div>JMS</div>
+          <div>teacher</div>
+        </div>
+        <div>
+          <component :is="navMenu"></component>
+          <!-- меняется в зависимости от страницы -->
+          <!-- <MainMenu /> -->
+        </div>
       </div>
-      <div>
-        <component :is="navMenu"></component>
-        <!-- меняется в зависимости от страницы -->
-        <!-- <MainMenu /> -->
-      </div>
-    </div>
-    <div class="page">
-      <!-- главный блок -->
-      <div class="header">
-        <div></div>
-        <div class="exit">Выйти</div>
-      </div>
-      <div>
-        <router-view></router-view>
+      <div class="page">
+        <!-- главный блок -->
+        <div class="header">
+          <div></div>
+          <div class="exit">Выйти</div>
+        </div>
+        <div>
+          <router-view></router-view>
+        </div>
       </div>
     </div>
   </div>
@@ -44,9 +46,8 @@ export default {
       console.log(this.$route.matched[lastEl]);
 
       if (this.$route.matched[lastEl].path == "") {
-      
         // Перенос в beforMount в app.vue
-        
+
         this.$router.replace({ path: "/profile" });
       } else if (this.$route.matched[lastEl - 1].path == "") {
         return "MainMenu";
@@ -71,6 +72,7 @@ export default {
 
 
 <style lang="scss" scoped>
+
 .container {
   display: flex;
 }
