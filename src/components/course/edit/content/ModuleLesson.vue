@@ -1,5 +1,22 @@
 <template>
-  <div>
+  <div class="list">
+    <div
+      class="add-line"
+      v-if="addBlock === 'addLine'"
+      @click="addBlock = 'addIcons'"
+    >
+      <div class="line"></div>
+      <div>Добавить урок</div>
+      <div class="line"></div>
+      <!-- <div>icons</div> -->
+    </div>
+    <div v-else>
+      <AddLessonPanel
+        :lessonIndex="lessonIndex"
+        :moduleIndex="moduleIndex"
+        @closeAddPanel="addBlock = 'addLine'"
+      />
+    </div>
     <div class="lesson">
       <div class="lesson-icon">
         <SvgTeacher />
@@ -25,10 +42,18 @@ import SvgTeacher from "@/components/svg/SvgTeacher.vue";
 import SvgVideo from "@/components/svg/SvgVideo.vue";
 import SvgTrash from "@/components/svg/SvgTrash.vue";
 
+import AddLessonPanel from "./AddLessonPanel.vue";
+
 export default {
   props: {
     lesson: Object,
     lessonIndex: Number,
+    moduleIndex: Number,
+  },
+  data() {
+    return {
+      addBlock: "addLine",
+    };
   },
   methods: {
     deleteLesson() {
@@ -36,6 +61,7 @@ export default {
     },
   },
   components: {
+    AddLessonPanel,
     SvgTeacher,
     SvgVideo,
     SvgTrash,
@@ -44,12 +70,42 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.list {
+  text-align: center;
+  .add-line {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.2em 0;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+    color: #8989f3;
+    font-family: "Roboto Regular";
+    .line {
+      width: 80%;
+      border-radius: 5px;
+      height: 0.5px;
+      background-color: #8989f3;
+      opacity: 0.7;
+    }
+    div:nth-child(2n) {
+      margin: 0 1em;
+    }
+    // word-wrap: normal;
+    white-space: nowrap;
+    font-size: 12px;
+  }
+  .add-line:hover {
+    opacity: 1;
+  }
+}
 .icon {
   cursor: pointer;
 }
 .lesson {
   display: flex;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
 }
 
 .lesson-icon {

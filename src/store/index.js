@@ -28,6 +28,7 @@ export default new Vuex.Store({
                 type: 'test',
                 title: 'Vue-Route во всей красе',
                 access: 'tarif_1',
+
               },
             ]
           }
@@ -87,6 +88,7 @@ export default new Vuex.Store({
         desc: '',
         lessons: []
       }
+      // variableCourse.content.push({сразу описание параметров модуля})
       variableCourse.content.push(newModule)
     },
     deleteModule(state, params) {
@@ -100,7 +102,20 @@ export default new Vuex.Store({
       // Создовать title по умолчанию в зависимости от типа урока ->
       // Потом title можно изменить (цвет серый)
       let variableCourse = state.courses.find(course => course.id == params.courseId)
-      variableCourse.content[params.moduleIndex].lessons.splice(params.lessonIndex, 0, params.newLesson)
+      let lessons = variableCourse.content[params.moduleIndex].lessons
+      // получение нового id
+      let newLesson = {
+        id: '1009',
+        type: 'test',
+        title: 'Vue route во всей красе',
+        access: 'tarif_1',
+      }
+      console.log(params);
+      if (params.lessonIndex === undefined) {
+        lessons.push(newLesson)
+      } else {
+        lessons.splice(params.lessonIndex, 0, newLesson)
+      }
     },
     deleteLesson(state, params) {
       // можем ли разделить данные ? (таблица куросв отедельно от контента)
