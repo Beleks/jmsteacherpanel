@@ -25,23 +25,13 @@
         <div class="module_heading-capture">Добавить описание модуля</div>
 
         <div class="module_list">
-          <div class="lesson">
-            <div class="lesson-icon">
-              <SvgTeacher />
-            </div>
-            <div class="inner-box">
-              <div class="box">
-                <div class="icon">
-                  <SvgVideo />
-                </div>
-                <div class="title">Название урока</div>
-                <div class="edit">редактировать</div>
-              </div>
-              <div class="icon">
-                <SvgTrash />
-              </div>
-            </div>
-          </div>
+          <ModuleLesson
+            v-for="(lesson, index) in module.lessons"
+            :key="index"
+            :lesson="lesson"
+            :lessonIndex="index"
+            @deleteLesson="deleteLesson"
+          />
 
           <div class="add_lesson_icons">
             <div class="icon">
@@ -64,6 +54,8 @@
 </template>
 
 <script>
+import ModuleLesson from "./ModuleLesson.vue";
+//
 import SvgTeacher from "@/components/svg/SvgTeacher.vue";
 import SvgAddModule from "@/components/svg/SvgAddModule.vue";
 import SvgTrash from "@/components/svg/SvgTrash.vue";
@@ -78,6 +70,8 @@ import SvgVebinar from "@/components/svg/SvgVebinar.vue";
 export default {
   props: {
     module: Object,
+    moduleIndex: Number,
+    courseId: String,
   },
   data() {
     return {};
@@ -86,11 +80,21 @@ export default {
   methods: {
     // редактирование названия модуля
     deleteModule() {
-      console.log("moduleVue");
       this.$emit("deleteModule", this.module.id);
+    },
+    addLesson() {
+      this.$store.commit("addLesson", {});
+    },
+    deleteLesson: function(lessonIndex) {
+      this.$store.commit("deleteLesson", {
+        courseId: this.courseId,
+        moduleIndex: this.moduleIndex,
+        lessonIndex
+      });
     },
   },
   components: {
+    ModuleLesson,
     SvgTeacher,
     SvgAddModule,
     SvgTrash,
@@ -104,9 +108,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.icon {
+  cursor: pointer;
+}
+
 .module {
-  max-width: 1074px;
-  margin: 0 auto;
+  margin-bottom: 1.8em;
 }
 
 .module_heading {
@@ -117,7 +124,6 @@ export default {
 .full-heading {
   display: flex;
   flex-direction: column;
-  // max-width: 1002px;
   width: 100%;
 }
 
@@ -137,7 +143,6 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  max-width: 1002px;
   background-color: #f1f1fe;
   border-radius: 5px;
   padding: 0.5em 1em;
@@ -163,75 +168,23 @@ export default {
   margin: 0 0 20px 15px;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  font-weight: regular;
   color: #2b2d42;
   opacity: 0.8;
 }
 
 /* MODULE_LIST start*/
-
-.module_list {
-  max-width: 1002px;
-}
-
-/* LESSON start */
-.lesson {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.lesson-icon {
-  padding-right: 1em;
-  padding-top: 0.3em;
-}
-
-.inner-box {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f1f1fe;
-  padding: 0.4em 0;
-  border-radius: 5px;
-
-  .icon {
-    margin: 0 1em;
-  }
-}
-
-.box {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.title {
-  display: block;
-  margin-right: 1.2em;
-  font-size: 1rem;
-  font-family: "Roboto Regular";
-}
-
-.edit {
-  font-family: "Roboto Regular";
-  font-size: 0.8rem;
-  color: #8989f3;
-}
-
-/* LESSON end */
-
 .add_lesson_icons {
   margin-left: 3.5em;
   display: flex;
-  flex-direction: row;
-
   .icon {
     margin-right: 20px;
   }
 }
-
 /* MODULE_LIST end*/
+
+/* LESSON start */
+
+// style in ModuleLesson.vue
+
+/* LESSON end */
 </style>

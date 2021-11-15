@@ -1,11 +1,13 @@
 <template>
   <div>
-    <div>
+    <div class="main">
       <div class="title">Содержание курса {{ courseId }}</div>
       <Module
         v-for="(module, index) in courseModules.content"
         :key="index"
         :module="module"
+        :moduleIndex="index"
+        :courseId="courseId"
         @deleteModule="deleteModule"
       />
       <div class="create_module">
@@ -14,7 +16,11 @@
         </div>
         <div class="module_title">
           <!-- input -->
-          <input v-model="moduleTitle" placeholder="Название модуля" />
+          <input
+            v-model="moduleTitle"
+            placeholder="Название модуля"
+            @keyup.enter="addModule()"
+          />
           <!-- <div class="bg_title" v-show="!moduleTitle">Название модуля</div> -->
         </div>
       </div>
@@ -47,19 +53,16 @@ export default {
     addModule() {
       // Убрать переменные ?
       let title = this.moduleTitle;
-      let id = this.courseId;
-      console.log(id);
-
+      let courseId = this.courseId;
       let newModule = {
         title,
       };
-      this.$store.commit("addModule", { id, newModule });
+      this.$store.commit("addModule", { courseId, newModule });
       this.moduleTitle = "";
     },
-    deleteModule: function (idModule) {
-      console.log('есть контакт');
-      let idCourse = this.courseId;
-      this.$store.commit("deleteModule", { idCourse, idModule });
+    deleteModule: function (moduleId) {
+      let courseId = this.courseId;
+      this.$store.commit("deleteModule", { courseId, moduleId });
     },
   },
   components: {
@@ -70,6 +73,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.main {
+  max-width: 1074px;
+  margin: 0 auto;
+  .title {
+    margin-bottom: 1.8em;
+  }
+}
 .create_module {
   display: flex;
   align-items: center;
@@ -80,6 +90,9 @@ export default {
     margin-left: 15px;
     position: relative;
     min-width: 100%;
+    input {
+      width: 300px;
+    }
   }
 }
 </style>

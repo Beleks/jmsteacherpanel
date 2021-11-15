@@ -36,7 +36,7 @@ export default {
           // svg: "SvgCourse",
         },
         {
-          title: "Содержание",
+          title: "Тарифы",
           path: "/tariffs",
           pathName: "mainTariffs",
           // svg: "SvgCourse",
