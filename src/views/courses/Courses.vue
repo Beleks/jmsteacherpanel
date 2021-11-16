@@ -63,8 +63,9 @@ export default {
       }
     },
     courses() {
-      // Получать только title, id
-      return this.$store.state.courses;
+      // Получать только title, id ?
+      console.log(this.$store.state.courses.courses);
+      return this.$store.state.courses.courses;
     },
   },
   methods: {

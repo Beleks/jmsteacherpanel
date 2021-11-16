@@ -29,7 +29,7 @@
           <div class="title">{{ lesson.title }}</div>
           <div class="edit">редактировать</div>
         </div>
-        <div class="icon" @click="deleteLesson()">
+        <div class="icon" @click="deleteThisLesson()">
           <SvgTrash />
         </div>
       </div>
@@ -49,6 +49,7 @@ export default {
     lesson: Object,
     lessonIndex: Number,
     moduleIndex: Number,
+    courseId: String,
   },
   data() {
     return {
@@ -56,8 +57,12 @@ export default {
     };
   },
   methods: {
-    deleteLesson() {
-      this.$emit("deleteLesson", this.lessonIndex);
+    deleteThisLesson() {
+      this.$store.commit("deleteLesson", {
+        courseId: this.courseId,
+        moduleIndex: this.moduleIndex,
+        lessonIndex: this.lessonIndex,
+      });
     },
   },
   components: {

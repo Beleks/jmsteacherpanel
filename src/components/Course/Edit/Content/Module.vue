@@ -18,7 +18,7 @@
               <SvgArrow />
             </div>
           </div>
-          <div class="icon" @click="deleteModule()">
+          <div class="icon" @click="deleteThisModule()">
             <SvgTrash />
           </div>
         </div>
@@ -31,7 +31,7 @@
             :lesson="lesson"
             :moduleIndex="moduleIndex"
             :lessonIndex="index"
-            @deleteLesson="deleteLesson"
+            :courseId="courseId"
           />
           <AddLessonPanel :moduleIndex="moduleIndex" />
         </div>
@@ -68,18 +68,13 @@ export default {
   computed: {},
   methods: {
     // редактирование названия модуля
-    deleteModule() {
-      this.$emit("deleteModule", this.module.id);
+    deleteThisModule() {
+      let courseId = this.courseId;
+      let moduleId = this.module.id;
+      this.$store.commit("deleteModule", { courseId, moduleId });
     },
     addLesson() {
-      this.$store.commit("addLesson", {});
-    },
-    deleteLesson: function (lessonIndex) {
-      this.$store.commit("deleteLesson", {
-        courseId: this.courseId,
-        moduleIndex: this.moduleIndex,
-        lessonIndex,
-      });
+      // this.$store.commit("addLesson", {});
     },
   },
   components: {
