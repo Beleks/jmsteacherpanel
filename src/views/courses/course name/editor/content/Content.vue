@@ -4,7 +4,7 @@
       <!--POPUP start-->
       <div class="popup" v-if="modal.isOpen">
         <div class="popup__container">
-          <div class="popup__svg">
+          <div class="popup__svg" @click="closeModal()">
             <SvgCross />
           </div>
 
@@ -66,9 +66,13 @@ export default {
     };
   },
   computed: {
-    modal(){
-      return this.$store.state.modal
+    // === popup
+
+    modal() {
+      return this.$store.state.modal;
     },
+
+    // =====
     courseId() {
       return this.$route.params.id;
     },
@@ -77,6 +81,10 @@ export default {
     },
   },
   methods: {
+    closeModal() {
+      this.$store.commit("closeModal");
+    },
+
     addModule() {
       // Убрать переменные ?
       let title = this.moduleTitle;
@@ -87,7 +95,6 @@ export default {
       this.$store.commit("addModule", { courseId, newModule });
       this.moduleTitle = "";
     },
-    
   },
   components: {
     Module,
@@ -191,7 +198,6 @@ export default {
   margin-bottom: 18px;
   min-height: 333px;
   resize: none;
-
 }
 
 .form__button {

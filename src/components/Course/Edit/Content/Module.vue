@@ -16,7 +16,9 @@
       <div class="full-heading">
         <div class="title-box">
           <div class="title_inner-box">
-            <div class="module_title">{{ module.title }}</div>
+            <div class="module_title" @click="openEditModal()">
+              {{ module.title }}
+            </div>
             <div class="icon">
               <SvgArrow />
             </div>
@@ -25,7 +27,7 @@
             <SvgTrash />
           </div>
         </div>
-        <div class="module_heading-capture">Добавить описание модуля</div>
+        <div class="module_heading-capture" @click="deleteThisModule()">Добавить описание модуля</div>
 
         <div class="module_list">
           <ModuleLesson
@@ -58,7 +60,6 @@ import SvgMove from "@/components/svg/SvgMove.vue";
 import SvgCross from "@/components/svg/SvgCross.vue";
 import AddLessonPanel from "./AddLessonPanel.vue";
 
-
 // import SvgCourse from '../../../svg/'
 
 export default {
@@ -72,6 +73,10 @@ export default {
   },
   computed: {},
   methods: {
+    //  Открытие модального окна
+    openEditModal() {
+      this.$store.commit("openModal");
+    },
     // редактирование названия модуля
     deleteThisModule() {
       let courseId = this.courseId;
@@ -159,14 +164,16 @@ export default {
   font-style: normal;
   font-size: 18px;
   line-height: 21px;
+  //временно когда нет иконки редактирования
+  cursor: pointer;
 }
 
 .module_heading-capture {
+  cursor: pointer;
   margin: 0 0 10px 15px;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   color: #2b2d42;
   opacity: 0.8;
 }
-
 </style>

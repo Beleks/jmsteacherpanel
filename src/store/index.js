@@ -12,6 +12,12 @@ export default new Vuex.Store({
   getters: {
   },
   mutations: {
+    openModal(state) {
+      state.modal.isOpen = true
+    },
+    closeModal(state) {
+      state.modal.isOpen = false
+    }
   },
   actions: {
   },
