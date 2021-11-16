@@ -1,16 +1,12 @@
 <template>
-  <div>
-    <div class="container">
-      <div class="menu">
-        <div class="header">
-          <div>JMS</div>
-          <div>teacher</div>
-        </div>
-        <div>
-          <component :is="navMenu"></component>
-          <!-- меняется в зависимости от страницы -->
-          <!-- <MainMenu /> -->
-        </div>
+  <div class="container">
+    <!-- <div>
+      modal
+    </div> -->
+    <div class="menu">
+      <div class="header">
+        <div>JMS</div>
+        <div>teacher</div>
       </div>
       <div class="page">
         <!-- главный блок -->

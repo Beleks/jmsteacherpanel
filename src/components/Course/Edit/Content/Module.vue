@@ -21,7 +21,7 @@
               <SvgArrow />
             </div>
           </div>
-          <div class="icon" @click="deleteModule()">
+          <div class="icon" @click="deleteThisModule()">
             <SvgTrash />
           </div>
         </div>
@@ -32,24 +32,11 @@
             v-for="(lesson, index) in module.lessons"
             :key="index"
             :lesson="lesson"
+            :moduleIndex="moduleIndex"
             :lessonIndex="index"
-            @deleteLesson="deleteLesson"
+            :courseId="courseId"
           />
-
-          <div class="add_lesson_icons">
-            <div class="icon">
-              <SvgVideo />
-            </div>
-            <div class="icon">
-              <SvgTask />
-            </div>
-            <div class="icon">
-              <SvgEdit />
-            </div>
-            <div class="icon">
-              <SvgVebinar />
-            </div>
-          </div>
+          <AddLessonPanel :moduleIndex="moduleIndex" />
         </div>
       </div>
     </div>
@@ -63,12 +50,14 @@ import SvgTeacher from "@/components/svg/SvgTeacher.vue";
 import SvgAddModule from "@/components/svg/SvgAddModule.vue";
 import SvgTrash from "@/components/svg/SvgTrash.vue";
 import SvgArrow from "@/components/svg/SvgArrow.vue";
-import SvgVideo from "@/components/svg/SvgVideo.vue";
-import SvgTask from "@/components/svg/SvgTask.vue";
-import SvgEdit from "@/components/svg/SvgEdit.vue";
-import SvgVebinar from "@/components/svg/SvgVebinar.vue";
+// import SvgVideo from "@/components/svg/SvgVideo.vue";
+// import SvgTask from "@/components/svg/SvgTask.vue";
+// import SvgEdit from "@/components/svg/SvgEdit.vue";
+// import SvgVebinar from "@/components/svg/SvgVebinar.vue";
 import SvgMove from "@/components/svg/SvgMove.vue";
 import SvgCross from "@/components/svg/SvgCross.vue";
+import AddLessonPanel from "./AddLessonPanel.vue";
+
 
 // import SvgCourse from '../../../svg/'
 
@@ -84,8 +73,13 @@ export default {
   computed: {},
   methods: {
     // редактирование названия модуля
-    deleteModule() {
-      this.$emit("deleteModule", this.module.id);
+    deleteThisModule() {
+      let courseId = this.courseId;
+      let moduleId = this.module.id;
+      this.$store.commit("deleteModule", { courseId, moduleId });
+    },
+    addLesson() {
+      // this.$store.commit("addLesson", {});
     },
     addLesson() {
       this.$store.commit("addLesson", {});
@@ -100,14 +94,11 @@ export default {
   },
   components: {
     ModuleLesson,
+    AddLessonPanel,
     SvgTeacher,
     SvgAddModule,
     SvgTrash,
     SvgArrow,
-    SvgVideo,
-    SvgTask,
-    SvgEdit,
-    SvgVebinar,
     SvgMove,
     SvgCross,
   },
@@ -115,9 +106,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
-// ============
 .icon {
   cursor: pointer;
 }
@@ -140,8 +128,6 @@ export default {
 
 .icons {
   display: flex;
-  flex-direction: row;
-  max-width: 72px;
   margin-top: 0.5em;
   position: relative;
   .icon {
@@ -176,33 +162,11 @@ export default {
 }
 
 .module_heading-capture {
-  // display: block;
-  margin: 0 0 20px 15px;
+  margin: 0 0 10px 15px;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   color: #2b2d42;
   opacity: 0.8;
 }
 
-/* MODULE_LIST start*/
-.add_lesson_icons {
-  margin-left: 3.5em;
-  display: flex;
-  .icon {
-    margin-right: 20px;
-  }
-}
-
-.icon_move {
-  position: absolute;
-  left: -36px;
-}
-
-/* MODULE_LIST end*/
-
-/* LESSON start */
-
-// style in ModuleLesson.vue
-
-/* LESSON end */
 </style>

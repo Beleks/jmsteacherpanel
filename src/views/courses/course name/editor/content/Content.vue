@@ -32,7 +32,6 @@
         :module="module"
         :moduleIndex="index"
         :courseId="courseId"
-        @deleteModule="deleteModule"
       />
       <div class="create_module">
         <div @click="addModule()" class="add_module">
@@ -85,10 +84,7 @@ export default {
       this.$store.commit("addModule", { courseId, newModule });
       this.moduleTitle = "";
     },
-    deleteModule: function (moduleId) {
-      let courseId = this.courseId;
-      this.$store.commit("deleteModule", { courseId, moduleId });
-    },
+    
   },
   components: {
     Module,
