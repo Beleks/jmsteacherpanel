@@ -33,20 +33,7 @@
         :moduleIndex="index"
         :courseId="courseId"
       />
-      <div class="create_module">
-        <div @click="addModule()" class="add_module">
-          <SvgAddSquare />
-        </div>
-        <div class="module_title">
-          <!-- input -->
-          <input
-            v-model="moduleTitle"
-            placeholder="Название модуля"
-            @keyup.enter="addModule()"
-          />
-          <!-- <div class="bg_title" v-show="!moduleTitle">Название модуля</div> -->
-        </div>
-      </div>
+      <AddModulePanel />
     </div>
     <!-- <div>
       <router-view></router-view>
@@ -56,14 +43,13 @@
 
 <script>
 import Module from "@/components/course/edit/content/Module.vue";
-import SvgAddSquare from "@/components/svg/SvgAddSquare.vue";
 import SvgCross from "@/components/svg/SvgCross.vue";
+
+import AddModulePanel from "@/components/course/edit/content/AddModulePanel.vue";
 
 export default {
   data() {
-    return {
-      moduleTitle: "",
-    };
+    return {};
   },
   computed: {
     // === popup
@@ -85,20 +71,11 @@ export default {
       this.$store.commit("closeModal");
     },
 
-    addModule() {
-      // Убрать переменные ?
-      let title = this.moduleTitle;
-      let courseId = this.courseId;
-      let newModule = {
-        title,
-      };
-      this.$store.commit("addModule", { courseId, newModule });
-      this.moduleTitle = "";
-    },
+    
   },
   components: {
+    AddModulePanel,
     Module,
-    SvgAddSquare,
     SvgCross,
   },
 };
@@ -110,21 +87,6 @@ export default {
   margin: 0 auto;
   .title {
     margin-bottom: 1.8em;
-  }
-}
-.create_module {
-  display: flex;
-  align-items: center;
-  .add_module {
-    cursor: pointer;
-  }
-  .module_title {
-    margin-left: 15px;
-    position: relative;
-    min-width: 100%;
-    input {
-      width: 300px;
-    }
   }
 }
 

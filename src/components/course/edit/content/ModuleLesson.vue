@@ -27,7 +27,7 @@
       <div class="inner-box">
         <div class="box">
           <div class="icon">
-            <SvgVideo />
+            <component :is="lesson.icon" />
           </div>
           <div class="title">{{ lesson.title }}</div>
           <div class="edit">редактировать</div>
@@ -43,6 +43,9 @@
 <script>
 import SvgTeacher from "@/components/svg/SvgTeacher.vue";
 import SvgVideo from "@/components/svg/SvgVideo.vue";
+import SvgTask from "@/components/svg/SvgTask.vue";
+import SvgEdit from "@/components/svg/SvgEdit.vue";
+import SvgVebinar from "@/components/svg/SvgVebinar.vue";
 import SvgTrash from "@/components/svg/SvgTrash.vue";
 import SvgMove from "@/components/svg/SvgMove.vue";
 import AddLessonPanel from "./AddLessonPanel.vue";
@@ -72,6 +75,9 @@ export default {
     AddLessonPanel,
     SvgTeacher,
     SvgVideo,
+    SvgTask,
+    SvgEdit,
+    SvgVebinar,
     SvgTrash,
     SvgMove,
   },

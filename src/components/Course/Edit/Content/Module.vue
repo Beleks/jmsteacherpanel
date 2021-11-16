@@ -1,5 +1,18 @@
 <template>
   <div class="module">
+    <div
+      class="add-line"
+      v-if="addBlock === 'addLine'"
+      @click="addBlock = 'addInput'"
+    >
+      <div class="line"></div>
+      <div>Добавить модуль</div>
+      <div class="line"></div>
+      <!-- <div>icons</div> -->
+    </div>
+    <div v-else>
+      <AddModulePanel  @closeAddPanel="addBlock = 'addLine'" />
+    </div>
     <div class="module_heading">
       <div class="icons">
         <div class="icon_move">
@@ -60,6 +73,8 @@ import SvgArrow from "@/components/svg/SvgArrow.vue";
 // import SvgVebinar from "@/components/svg/SvgVebinar.vue";
 import SvgMove from "@/components/svg/SvgMove.vue";
 import SvgCross from "@/components/svg/SvgCross.vue";
+
+import AddModulePanel from "./AddModulePanel.vue";
 import AddLessonPanel from "./AddLessonPanel.vue";
 
 // import SvgCourse from '../../../svg/'
@@ -71,7 +86,9 @@ export default {
     courseId: String,
   },
   data() {
-    return {};
+    return {
+      addBlock: "addLine",
+    };
   },
   computed: {},
   methods: {
@@ -89,6 +106,7 @@ export default {
   components: {
     ModuleLesson,
     AddLessonPanel,
+    AddModulePanel,
     SvgTeacher,
     SvgAddModule,
     SvgTrash,
@@ -105,7 +123,35 @@ export default {
 }
 
 .module {
-  margin-bottom: 1.8em;
+  margin-bottom: 1em;
+}
+
+.add-line {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.5em 0;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+  color: #8989f3;
+  font-family: "Roboto Regular";
+  .line {
+    width: 80%;
+    border-radius: 5px;
+    height: 0.5px;
+    background-color: #8989f3;
+    opacity: 0.7;
+  }
+  div:nth-child(2n) {
+    margin: 0 1em;
+  }
+  // word-wrap: normal;
+  white-space: nowrap;
+  font-size: 1rem;
+}
+.add-line:hover {
+  opacity: 1;
 }
 
 .module_heading {

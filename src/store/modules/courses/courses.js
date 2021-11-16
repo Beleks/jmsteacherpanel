@@ -16,15 +16,16 @@ export default {
               {
                 id: '1000',
                 type: 'video',
+                icon: 'SvgVideo',
                 title: 'Vuex - централизованное хранилище данных',
                 access: 'tarif_1',
               },
               {
                 id: '1001',
                 type: 'test',
+                icon: 'SvgTask',
                 title: 'Vue-Route во всей красе',
                 access: 'tarif_1',
-
               },
             ]
           }
@@ -124,11 +125,10 @@ export default {
 
       let newTitle = setDefaultTitle(params.lessonType)
 
-      console.log(newTitle);
       let newLesson = {
         id: '1009',
-        type: 'test',
-        // ??????
+        type: params.lessonType,
+        icon: params.svgIcon,
         title: newTitle,
         access: 'tarif_1',
       }

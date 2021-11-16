@@ -1,15 +1,20 @@
 <template>
   <div class="add_lesson_icons">
-    <div
-      class="icon"
-      v-for="(icon, index) in icons"
-      :key="index"
-      @click="addLesson(icon.type, lessonIndex)"
-    >
-      <component :is="icon.svg" />
+    <div class="icons">
+      <div
+        class="icon"
+        v-for="(icon, index) in icons"
+        :key="index"
+        @click="addLesson(icon, lessonIndex)"
+      >
+        <component :is="icon.svg" />
+      </div>
+    </div>
+    <div class="cancle" v-if="!(lessonIndex === undefined)" @click="$emit('closeAddPanel')">
+      Отмена
     </div>
   </div>
-</template>
+</template> 
 
 <script>
 import SvgVideo from "@/components/svg/SvgVideo.vue";
@@ -39,15 +44,16 @@ export default {
     },
   },
   methods: {
-    addLesson(type, index) {
-      console.log("тип урока: ", type);
+    addLesson(icon, index) {
+      console.log("тип урока: ", icon.type);
       let courseId = this.courseId;
       console.log(this.moduleIndex);
       let moduleIndex = this.moduleIndex;
       this.$store.commit("addLesson", {
         courseId,
-        lessonType: type,
+        lessonType: icon.type,
         moduleIndex,
+        svgIcon: icon.svg,
         lessonIndex: index,
       });
       this.$emit("closeAddPanel");
@@ -66,9 +72,18 @@ export default {
 .add_lesson_icons {
   margin: 0.8em 3.5em;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .icons {
+    display: flex;
+  }
   .icon {
     cursor: pointer;
     margin-right: 20px;
+  }
+  .cancle {
+    cursor: pointer;
+    color: #8989f3;
   }
 }
 </style>
