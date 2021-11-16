@@ -1,16 +1,25 @@
 <template>
   <div class="create_module">
-    <div @click="addModule()" class="add_module">
-      <SvgAddSquare />
+    <div class="input_block">
+      <div @click="addModule()" class="add_module">
+        <SvgAddSquare />
+      </div>
+      <div class="module_title">
+        <!-- input -->
+        <input
+          v-model="moduleTitle"
+          placeholder="Название модуля"
+          @keyup.enter="addModule()"
+        />
+        <!-- <div class="bg_title" v-show="!moduleTitle">Название модуля</div> -->
+      </div>
     </div>
-    <div class="module_title">
-      <!-- input -->
-      <input
-        v-model="moduleTitle"
-        placeholder="Название модуля"
-        @keyup.enter="addModule()"
-      />
-      <!-- <div class="bg_title" v-show="!moduleTitle">Название модуля</div> -->
+    <div
+      v-if="!(moduleIndex === undefined)"
+      class="cancle"
+      @click="$emit('closeAddPanel')"
+    >
+      Отмена
     </div>
   </div>
 </template>
@@ -19,7 +28,9 @@
 import SvgAddSquare from "@/components/svg/SvgAddSquare.vue";
 
 export default {
-  props: {},
+  props: {
+    moduleIndex: Number,
+  },
   data() {
     return {
       moduleTitle: "",
@@ -35,12 +46,13 @@ export default {
       // Убрать переменные ?
       let title = this.moduleTitle;
       let courseId = this.courseId;
+      let moduleIndex = this.moduleIndex;
       let newModule = {
         title,
       };
-      this.$store.commit("addModule", { courseId, newModule });
+      this.$store.commit("addModule", { courseId, moduleIndex, newModule });
       this.moduleTitle = "";
-      this.$emit('closeAddPanel')
+      this.$emit("closeAddPanel");
     },
   },
   components: {
@@ -53,7 +65,12 @@ export default {
 .create_module {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin: 1em 0;
+  .input_block {
+    display: flex;
+    align-items: center;
+  }
   .add_module {
     cursor: pointer;
   }
@@ -64,6 +81,11 @@ export default {
     input {
       width: 300px;
     }
+  }
+  .cancle {
+    cursor: pointer;
+    color: rgba(43, 45, 66, 0.6);
+    margin-right: 1em;
   }
 }
 </style>

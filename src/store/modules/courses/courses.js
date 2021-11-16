@@ -67,7 +67,6 @@ export default {
   },
   mutations: {
     addModule(state, params) {
-      // Сделать добавление модуля через splice когда будем использвать index
       let variableCourse = state.courses.find(course => course.id == params.courseId)
       let newId
       if (variableCourse.content.length === 0) {
@@ -86,7 +85,11 @@ export default {
         lessons: []
       }
       // variableCourse.content.push({сразу описание параметров модуля})
-      variableCourse.content.push(newModule)
+      if (params.moduleIndex === undefined) {
+        variableCourse.content.push(newModule)
+      } else {
+        variableCourse.content.splice(params.moduleIndex, 0, newModule)
+      }
     },
     deleteModule(state, params) {
       let variableCourse = state.courses.find(course => course.id == params.courseId)
@@ -132,7 +135,6 @@ export default {
         title: newTitle,
         access: 'tarif_1',
       }
-      console.log(params);
       if (params.lessonIndex === undefined) {
         lessons.push(newLesson)
       } else {

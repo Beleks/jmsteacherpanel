@@ -11,7 +11,10 @@
       <!-- <div>icons</div> -->
     </div>
     <div v-else>
-      <AddModulePanel  @closeAddPanel="addBlock = 'addLine'" />
+      <AddModulePanel
+        :moduleIndex="moduleIndex"
+        @closeAddPanel="addBlock = 'addLine'"
+      />
     </div>
     <div class="module_heading">
       <div class="icons">
