@@ -93,6 +93,27 @@ export default {
       variableCourse.content.splice(selectedModuleIndex, 1)
     },
     addLesson(state, params) {
+      function setDefaultTitle(lessonType) {
+        let title = ''
+        switch (lessonType) {
+          case 'video':
+            title = 'Название видеоурока'
+            break;
+          case 'test':
+            title = 'Название теста'
+            break;
+          case 'practice':
+            title = 'Название задания'
+            break;
+          case 'vebinar':
+            title = 'Название вебинара'
+            break;
+          // default:
+          //   break;
+        }
+        return title
+      }
+
       // метод должен быть и для вставки в определенное место и для вставки в конец
       // newLesson {id курса ? индекс модуля ? индекс урока ?}
       // Создовать title по умолчанию в зависимости от типа урока ->
@@ -100,9 +121,11 @@ export default {
       let variableCourse = state.courses.find(course => course.id == params.courseId)
       let lessons = variableCourse.content[params.moduleIndex].lessons
       // получение нового id
-      let newTitle = (lessoType) => {
-        return `Название ${lessoType} урока`
-      }
+
+
+      let newTitle = setDefaultTitle(params.lessonType)
+
+      console.log(newTitle);
       let newLesson = {
         id: '1009',
         type: 'test',

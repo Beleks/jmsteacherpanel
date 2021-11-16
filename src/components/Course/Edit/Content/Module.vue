@@ -27,7 +27,9 @@
             <SvgTrash />
           </div>
         </div>
-        <div class="module_heading-capture" @click="deleteThisModule()">Добавить описание модуля</div>
+        <div class="module_heading-capture" @click="deleteThisModule()">
+          Добавить описание модуля
+        </div>
 
         <div class="module_list">
           <ModuleLesson
@@ -82,19 +84,6 @@ export default {
       let courseId = this.courseId;
       let moduleId = this.module.id;
       this.$store.commit("deleteModule", { courseId, moduleId });
-    },
-    addLesson() {
-      // this.$store.commit("addLesson", {});
-    },
-    addLesson() {
-      this.$store.commit("addLesson", {});
-    },
-    deleteLesson: function (lessonIndex) {
-      this.$store.commit("deleteLesson", {
-        courseId: this.courseId,
-        moduleIndex: this.moduleIndex,
-        lessonIndex,
-      });
     },
   },
   components: {
