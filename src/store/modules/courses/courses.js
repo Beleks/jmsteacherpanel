@@ -75,7 +75,12 @@ export default {
         let lastChildIndex = variableCourse.content.length - 1
         newId = Number(variableCourse.content[lastChildIndex].id) + 1
       }
-      let title = params.newModule.title
+      let title
+      if (params.newModule.title === "") {
+        title = "Название модуля"
+      } else {
+        title = params.newModule.title
+      }
       let newModule = {
         id: newId,
         title,
