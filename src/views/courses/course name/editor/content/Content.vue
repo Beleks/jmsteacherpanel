@@ -2,7 +2,7 @@
   <div>
     <div class="main">
       <!--POPUP start-->
-      <div class="popup">
+      <div class="popup" v-if="modal.isOpen">
         <div class="popup__container">
           <div class="popup__svg">
             <SvgCross />
@@ -66,6 +66,9 @@ export default {
     };
   },
   computed: {
+    modal(){
+      return this.$store.state.modal
+    },
     courseId() {
       return this.$route.params.id;
     },
