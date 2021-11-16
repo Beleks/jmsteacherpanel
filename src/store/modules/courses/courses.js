@@ -122,7 +122,6 @@ export default {
       let lessons = variableCourse.content[params.moduleIndex].lessons
       // получение нового id
 
-
       let newTitle = setDefaultTitle(params.lessonType)
 
       console.log(newTitle);

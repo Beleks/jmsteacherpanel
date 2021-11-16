@@ -47,7 +47,6 @@ import SvgTrash from "@/components/svg/SvgTrash.vue";
 import SvgMove from "@/components/svg/SvgMove.vue";
 import AddLessonPanel from "./AddLessonPanel.vue";
 
-
 export default {
   props: {
     lesson: Object,
@@ -75,7 +74,6 @@ export default {
     SvgVideo,
     SvgTrash,
     SvgMove,
-
   },
 };
 </script>
@@ -153,6 +151,7 @@ export default {
 }
 
 .icon_move {
+  display: none;
   position: absolute;
   left: -36px;
   padding-top: 0.4em;

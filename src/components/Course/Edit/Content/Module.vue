@@ -27,7 +27,7 @@
             <SvgTrash />
           </div>
         </div>
-        <div class="module_heading-capture" @click="deleteThisModule()">
+        <div class="module_heading-capture" @click="openEditModal()">
           Добавить описание модуля
         </div>
 
@@ -124,8 +124,18 @@ export default {
   display: flex;
   margin-top: 0.5em;
   position: relative;
+  > div {
+    cursor: pointer;
+  }
   .icon {
     margin-right: 15px;
+    // максимальная ширина чтобы не растягивать высоту контейнера иконки
+    max-height: 24px;
+  }
+  .icon_move {
+    display: none;
+    position: absolute;
+    left: -36px;
   }
 }
 
