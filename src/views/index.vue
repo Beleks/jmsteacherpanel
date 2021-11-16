@@ -8,15 +8,16 @@
         <div>JMS</div>
         <div>teacher</div>
       </div>
-      <div class="page">
-        <!-- главный блок -->
-        <div class="header">
-          <div></div>
-          <div class="exit">Выйти</div>
-        </div>
-        <div>
-          <router-view></router-view>
-        </div>
+      <component :is="navMenu" />
+    </div>
+    <div class="page">
+      <!-- главный блок -->
+      <div class="header">
+        <div></div>
+        <div class="exit">Выйти</div>
+      </div>
+      <div>
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -68,7 +69,6 @@ export default {
 
 
 <style lang="scss" scoped>
-
 .container {
   display: flex;
 }
