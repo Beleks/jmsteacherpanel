@@ -11,7 +11,7 @@ export default {
             title: 'Название модуля',
             group: '',
             tariffs: '',
-            desc: 'Описание модуля',
+            desc: 'Описание модуля 1',
             lessons: [
               {
                 id: '1000',
@@ -66,6 +66,16 @@ export default {
     }
   },
   mutations: {
+    // closeModal(state) {
+    //   console.log(state, 'from module');
+    // },
+    saveChangeFromModal(state, params) {
+      let variableCourse = state.courses.find(course => course.id == params.modal.courseId)
+      // сделать слияние объектов ?
+      let seletcModule = variableCourse.content[params.modal.moduleIndex]
+      seletcModule.title = params.modal.title
+      seletcModule.desc = params.modal.desc
+    },
     addModule(state, params) {
       let variableCourse = state.courses.find(course => course.id == params.courseId)
       let newId

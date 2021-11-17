@@ -9,13 +9,27 @@
           </div>
 
           <div class="form">
-            <input type="text" class="form__name" placeholder="Название" />
+            <input
+              type="text"
+              class="form__name"
+              placeholder="Название"
+              v-model="modal.title"
+            />
             <p class="form__text">Описание модуля</p>
             <div class="text_edit_panel">Панель редактирования текста</div>
-            <textarea class="form__description" placeholder="Описание модуля">
+            <textarea
+              class="form__description"
+              placeholder="Описание модуля"
+              v-model="modal.desc"
+            >
             </textarea>
 
-            <input type="submit" class="form__button" value="Сохранить" />
+            <input
+              type="submit"
+              class="form__button"
+              value="Сохранить"
+              @click="saveChange()"
+            />
           </div>
         </div>
 
@@ -70,8 +84,10 @@ export default {
     closeModal() {
       this.$store.commit("closeModal");
     },
-
-    
+    saveChange() {
+      this.$store.commit("saveChangeFromModal", { modal: this.modal });
+      this.$store.commit("closeModal");
+    },
   },
   components: {
     AddModulePanel,

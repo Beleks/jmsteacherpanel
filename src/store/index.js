@@ -6,20 +6,32 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     modal: {
-      isOpen: false
+      isOpen: false,
+      title: '',
+      desc: '',
+      courseId: '',
+      moduleIndex: ''
     }
   },
   getters: {
   },
   mutations: {
-    openModal(state) {
-      state.modal.isOpen = true
+    openModal(state, params) {
+      state.modal = {
+        isOpen: true,
+        title: params.moduleTitle,
+        desc: params.moduleDesc,
+        courseId: params.courseId,
+        moduleIndex: params.moduleIndex
+      }
     },
     closeModal(state) {
       state.modal.isOpen = false
     }
+
   },
   actions: {
+
   },
   modules: {
     courses

@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="module_heading-capture" @click="openEditModal()">
-          Добавить описание модуля
+          Описание модуля
         </div>
 
         <div class="module_list">
@@ -97,7 +97,12 @@ export default {
   methods: {
     //  Открытие модального окна
     openEditModal() {
-      this.$store.commit("openModal");
+      this.$store.commit("openModal", {
+        courseId: this.courseId,
+        moduleIndex: this.moduleIndex,
+        moduleTitle: this.module.title,
+        moduleDesc: this.module.desc,
+      });
     },
     // редактирование названия модуля
     deleteThisModule() {
