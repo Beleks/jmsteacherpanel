@@ -30,7 +30,9 @@
             <component :is="lesson.icon" />
           </div>
           <div class="title">{{ lesson.title }}</div>
-          <div class="edit">редактировать</div>
+          <router-link tag="div" class="edit" :to="{ path: 'theory' }" append>
+            редактировать
+          </router-link>
         </div>
         <div class="icon" @click="deleteThisLesson()">
           <SvgTrash />

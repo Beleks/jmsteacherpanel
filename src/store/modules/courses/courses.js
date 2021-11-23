@@ -79,11 +79,14 @@ export default {
     addModule(state, params) {
       let variableCourse = state.courses.find(course => course.id == params.courseId)
       let newId
+      function genID(serverNum) {
+        return (serverNum + "" + Math.floor(Math.random() * 100000));
+      }
       if (variableCourse.content.length === 0) {
         newId = '100'
       } else {
         let lastChildIndex = variableCourse.content.length - 1
-        newId = Number(variableCourse.content[lastChildIndex].id) + 1
+        newId = genID(Number(variableCourse.content[lastChildIndex].id))
       }
       let title
       if (params.newModule.title === "") {

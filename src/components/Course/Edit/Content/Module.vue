@@ -35,7 +35,7 @@
             <div class="module_title" @click="openEditModal()">
               {{ module.title }}
             </div>
-            <div class="icon">
+            <div class="icon" @click="isOpen = !isOpen">
               <SvgArrow />
             </div>
           </div>
@@ -47,16 +47,18 @@
           Описание модуля
         </div>
 
-        <div class="module_list">
-          <ModuleLesson
-            v-for="(lesson, index) in module.lessons"
-            :key="index"
-            :lesson="lesson"
-            :moduleIndex="moduleIndex"
-            :lessonIndex="index"
-            :courseId="courseId"
-          />
-          <AddLessonPanel :moduleIndex="moduleIndex" />
+        <div class="_content" v-show="isOpen">
+          <div>
+            <ModuleLesson
+              v-for="(lesson, index) in module.lessons"
+              :key="index"
+              :lesson="lesson"
+              :moduleIndex="moduleIndex"
+              :lessonIndex="index"
+              :courseId="courseId"
+            />
+            <AddLessonPanel :moduleIndex="moduleIndex" />
+          </div>
         </div>
       </div>
     </div>
@@ -91,10 +93,12 @@ export default {
   data() {
     return {
       addBlock: "addLine",
+      isOpen: true,
     };
   },
   computed: {},
   methods: {
+    hideLessons() {},
     //  Открытие модального окна
     openEditModal() {
       this.$store.commit("openModal", {
@@ -126,12 +130,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.icon {
-  cursor: pointer;
-}
-
-.module {
-  margin-bottom: 1em;
+.close {
 }
 
 .add-line {
@@ -165,6 +164,8 @@ export default {
 .module_heading {
   display: flex;
   flex-direction: row;
+  user-select: none;
+
   // position: relative;
 }
 
@@ -194,6 +195,9 @@ export default {
 }
 
 .title-box {
+  // для анимации
+  // min-width: 100%;
+  //
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -228,5 +232,9 @@ export default {
   font-size: 14px;
   color: #2b2d42;
   opacity: 0.8;
+  transition: color 0.2s ease-in-out;
+}
+.module_heading-capture:hover {
+  color: #4b4ba8;
 }
 </style>

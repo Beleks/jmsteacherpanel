@@ -46,6 +46,7 @@ export default {
 }
 html {
   background-color: #fcfcff;
+  // overflow-x: hidden;
 }
 input {
   all: unset;

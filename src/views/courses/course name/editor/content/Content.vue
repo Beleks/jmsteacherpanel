@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="main">
+    <div class="main" v-if="path">
       <!--POPUP start-->
       <div class="popup" v-if="modal.isOpen">
         <div class="popup__container">
@@ -40,18 +40,21 @@
 
       <!--  -->
       <div class="title">Содержание курса {{ courseId }}</div>
-      <Module
-        v-for="(module, index) in courseModules.content"
-        :key="index"
-        :module="module"
-        :moduleIndex="index"
-        :courseId="courseId"
-      />
+      <transition-group name="list-complete">
+        <Module
+          v-for="(module, index) in courseModules.content"
+          :key="module.id"
+          :module="module"
+          :moduleIndex="index"
+          :courseId="courseId"
+          class="list-complete-item"
+        />
+      </transition-group>
       <AddModulePanel />
     </div>
-    <!-- <div>
+    <div>
       <router-view></router-view>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -79,6 +82,14 @@ export default {
     courseModules() {
       return this.$store.getters.currentCourse(this.courseId);
     },
+    path() {
+      let lastEl = this.$route.matched.length - 1;
+      if (this.$route.matched[lastEl].path == "/courses/:id/editor/content") {
+        return true;
+      } else {
+        return false;
+      }
+    },
   },
   methods: {
     closeModal() {
@@ -98,7 +109,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.list-complete-item {
+  transition: all 0.6s;
+  // display: inline-block;
+  // margin-right: 10px;
+}
+.list-complete-enter {
+  /* .list-complete-leave-active до версии 2.1.8 */
+  // width: 100%;
+  opacity: 0;
+  transform: translateX(30px);
+}
+.list-complete-leave-to {
+  opacity: 0;
+  // transform: translateX(30px);
+  // position: absolute;
+}
+.list-complete-leave-active {
+  position: absolute;
+  width: 100%;
+}
+
+//
 .main {
+  position: relative;
   max-width: 1074px;
   margin: 0 auto;
   .title {

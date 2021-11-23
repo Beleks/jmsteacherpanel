@@ -100,7 +100,6 @@ export default {
   padding: 30px 50px;
   font-family: "Roboto Medium";
   width: 100%;
-
   .header {
     display: flex;
     justify-content: space-between;
