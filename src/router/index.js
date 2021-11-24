@@ -1,7 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import User from '../views/settings/Settings.vue'
+
+import Theory from '../views/courses/course name/editor/content/theory/Theory.vue'
 
 Vue.use(VueRouter)
+
+
 
 const routes = [
   {
@@ -26,8 +31,8 @@ const routes = [
                 children: [
                   {
                     path: 'main',
-                    name: 'mainEditor',
-                    component: () => import('../views/courses/course name/editor/main_info/MainInfo.vue')
+                    name: 'mainInfo',
+                    component: () => import('../views/courses/course name/editor/tariffs/Tariffs.vue')
                   },
                   {
                     path: 'content',
@@ -36,8 +41,31 @@ const routes = [
                     children: [
                       {
                         path: 'theory',
-                        component: () => import('../views/courses/course name/editor/content/theory/Theory.vue')
+                        name: 'theory',
+                        component: () => import('../views/courses/course name/editor/content/theory/Theory.vue'),
                       },
+                      {
+                        path: 'test',
+                        name: 'test',
+                        component: () => import('../views/courses/course name/editor/content/test/Test.vue'),
+                      },
+                      {
+                        path: 'practice',
+                        name: 'practice',
+                        component: () => import('../views/courses/course name/editor/content/practice/Practice.vue'),
+                      },
+                      {
+                        path: 'vebinar',
+                        name: 'vebinar',
+                        component: () => import('../views/courses/course name/editor/content/vebinar/Vebinar.vue'),
+                      },
+                      // component: () => import('../views/courses/course name/editor/content/theory/Theory.vue'),
+
+                      // {
+                      //   path: ':lesson',
+                      //   name: 'lesson',
+                      //   component: () => import('../views/courses/course name/editor/content/theory/Theory.vue')
+                      // },
                     ]
                   },
                   {

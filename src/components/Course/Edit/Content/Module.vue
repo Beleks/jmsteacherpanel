@@ -1,71 +1,74 @@
 <template>
-  <div class="module">
-    <div
-      class="add-line"
-      v-if="addBlock === 'addLine'"
-      @click="addBlock = 'addInput'"
-    >
-      <div class="line"></div>
-      <div>Добавить модуль</div>
-      <div class="line"></div>
-      <!-- <div>icons</div> -->
-    </div>
-    <div v-else>
-      <AddModulePanel
-        :moduleIndex="moduleIndex"
-        @closeAddPanel="addBlock = 'addLine'"
-      />
-    </div>
-    <div class="module_heading">
-      <div class="icons">
-        <div class="icon_move">
-          <SvgMove />
-        </div>
-        <div class="icon">
-          <SvgTeacher />
-        </div>
-        <div class="icon">
-          <SvgAddModule />
-        </div>
+  <div>
+    <div class="module">
+      <div
+        class="add-line"
+        v-if="addBlock === 'addLine'"
+        @click="addBlock = 'addInput'"
+      >
+        <div class="line"></div>
+        <div>Добавить модуль</div>
+        <div class="line"></div>
+        <!-- <div>icons</div> -->
       </div>
-
-      <div class="full-heading">
-        <div class="title-box">
-          <div class="title_inner-box">
-            <div class="module_title" @click="openEditModal()">
-              {{ module.title }}
-            </div>
-            <div
-              class="icon arrow"
-              @click="isOpen = !isOpen"
-              :class="{ svg_open: !isOpen }"
-            >
-              <SvgArrow />
-            </div>
+      <div v-else>
+        <AddModulePanel
+          :moduleIndex="moduleIndex"
+          @closeAddPanel="addBlock = 'addLine'"
+        />
+      </div>
+      <div class="module_heading">
+        <div class="icons">
+          <div class="icon_move">
+            <SvgMove />
           </div>
-          <div class="icon" @click="deleteThisModule()">
-            <SvgTrash />
+          <div class="icon">
+            <SvgTeacher />
           </div>
-        </div>
-        <div class="module_heading-capture" @click="openEditModal()">
-          Описание модуля
+          <div class="icon">
+            <SvgAddModule />
+          </div>
         </div>
 
-        <div class="_content" v-show="isOpen">
-          <div>
-            <ModuleLesson
-              v-for="(lesson, index) in module.lessons"
-              :key="index"
-              :lesson="lesson"
-              :moduleIndex="moduleIndex"
-              :lessonIndex="index"
-              :courseId="courseId"
-            />
-            <AddLessonPanel :moduleIndex="moduleIndex" />
+        <div class="full-heading">
+          <div class="title-box">
+            <div class="title_inner-box">
+              <div class="module_title" @click="openEditModal()">
+                {{ module.title }}
+              </div>
+              <div
+                class="icon arrow"
+                @click="isOpen = !isOpen"
+                :class="{ svg_open: !isOpen }"
+              >
+                <SvgArrow />
+              </div>
+            </div>
+            <div class="icon" @click="deleteThisModule()">
+              <SvgTrash />
+            </div>
+          </div>
+          <div class="module_heading-capture" @click="openEditModal()">
+            Описание модуля
+          </div>
+
+          <div class="_content" v-show="isOpen">
+            <div>
+              <ModuleLesson
+                v-for="(lesson, index) in module.lessons"
+                :key="index"
+                :lesson="lesson"
+                :moduleIndex="moduleIndex"
+                :lessonIndex="index"
+                :courseId="courseId"
+              />
+              <AddLessonPanel :moduleIndex="moduleIndex" />
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -218,6 +221,7 @@ export default {
   display: flex;
   flex-direction: row;
   .arrow {
+    cursor: pointer;
     transition: transform 0.3s ease-in-out;
   }
 }

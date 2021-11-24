@@ -30,7 +30,7 @@
             <component :is="lesson.icon" />
           </div>
           <div class="title">{{ lesson.title }}</div>
-          <router-link tag="div" class="edit" :to="{ path: 'theory' }" append>
+          <router-link tag="div" class="edit" :to="lessonPath" append>
             редактировать
           </router-link>
         </div>
@@ -63,6 +63,35 @@ export default {
     return {
       addBlock: "addLine",
     };
+  },
+  computed: {
+    lessonPath() {
+      let lessonId = this.lesson.id;
+      let routeParams = {
+        path: "",
+        query: { id: lessonId },
+      };
+      console.log(this.$router, "router");
+      // query: { id: lessonId },
+
+      switch (this.lesson.type) {
+        case "video":
+          routeParams.path = "theory";
+          break;
+        case "test":
+          routeParams.path = "test";
+          break;
+        case "vebinar":
+          routeParams.path = "vebinar";
+          break;
+        case "practice":
+          routeParams.path = "practice";
+          break;
+      }
+      console.log(routeParams);
+
+      return routeParams;
+    },
   },
   methods: {
     deleteThisLesson() {
