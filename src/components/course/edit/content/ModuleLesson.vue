@@ -71,9 +71,6 @@ export default {
         path: "",
         query: { id: lessonId },
       };
-      console.log(this.$router, "router");
-      // query: { id: lessonId },
-
       switch (this.lesson.type) {
         case "video":
           routeParams.path = "theory";
@@ -88,8 +85,6 @@ export default {
           routeParams.path = "practice";
           break;
       }
-      console.log(routeParams);
-
       return routeParams;
     },
   },

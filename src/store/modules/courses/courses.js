@@ -79,8 +79,8 @@ export default {
     addModule(state, params) {
       let variableCourse = state.courses.find(course => course.id == params.courseId)
       let newId
-      function genID(serverNum) {
-        return (serverNum + "" + Math.floor(Math.random() * 100000));
+      function genID(lastNum) {
+        return (lastNum + "" + Math.floor(Math.random() * 100000));
       }
       if (variableCourse.content.length === 0) {
         newId = '100'
@@ -135,19 +135,26 @@ export default {
         }
         return title
       }
+      function genID(lastNum = 1000) {
+        return (lastNum + "" + Math.floor(Math.random() * 100000));
+      }
 
+      let variableCourse = state.courses.find(course => course.id == params.courseId)
+      let lessons = variableCourse.content[params.moduleIndex].lessons
+
+      let moduleLength = variableCourse.content[params.moduleIndex].lessons.length
+      let newId = genID(Number(moduleLength))
       // метод должен быть и для вставки в определенное место и для вставки в конец
       // newLesson {id курса ? индекс модуля ? индекс урока ?}
       // Создовать title по умолчанию в зависимости от типа урока ->
       // Потом title можно изменить (цвет серый)
-      let variableCourse = state.courses.find(course => course.id == params.courseId)
-      let lessons = variableCourse.content[params.moduleIndex].lessons
+
       // получение нового id
 
       let newTitle = setDefaultTitle(params.lessonType)
 
       let newLesson = {
-        id: '1009',
+        id: newId,
         type: params.lessonType,
         icon: params.svgIcon,
         title: newTitle,

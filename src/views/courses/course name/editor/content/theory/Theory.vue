@@ -9,7 +9,6 @@ export default {
   },
   computed: {
     path() {
-      console.log(this.$route, 'lesson теория');
       return this.$route;
     },
   },
