@@ -35,7 +35,11 @@
             <div class="module_title" @click="openEditModal()">
               {{ module.title }}
             </div>
-            <div class="icon" @click="isOpen = !isOpen">
+            <div
+              class="icon arrow"
+              @click="isOpen = !isOpen"
+              :class="{ svg_open: !isOpen }"
+            >
               <SvgArrow />
             </div>
           </div>
@@ -130,7 +134,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.close {
+.svg_open {
+  transform: rotate(-180deg);
 }
 
 .add-line {
@@ -212,6 +217,9 @@ export default {
   align-items: center;
   display: flex;
   flex-direction: row;
+  .arrow {
+    transition: transform 0.3s ease-in-out;
+  }
 }
 
 .module_title {

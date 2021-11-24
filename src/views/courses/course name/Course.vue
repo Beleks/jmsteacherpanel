@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="path">
+    <div>
     </div>
     <div>
       <router-view></router-view>
@@ -13,14 +13,14 @@ export default {
   data() {
     return {};
   },
-  computed: {
-    path(){
-      return true;
-    },
-    PathParams() {
-      return this.$route.params.id;
-    },
-  },
+  // computed: {
+  //   path(){
+  //     return true;
+  //   },
+  //   PathParams() {
+  //     return this.$route.params.id;
+  //   },
+  // },
 };
 </script>
 
