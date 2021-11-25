@@ -59,6 +59,7 @@
                 :key="index"
                 :lesson="lesson"
                 :moduleIndex="moduleIndex"
+                :moduleId="module.id"
                 :lessonIndex="index"
                 :courseId="courseId"
               />

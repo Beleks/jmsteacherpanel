@@ -63,6 +63,11 @@ export default {
   getters: {
     currentCourse: state => id => {
       return state.courses.filter(course => course.id == id)[0]
+    },
+    currentLesson: state => (courseId, moduleId, lessonId) => {
+      let course = state.courses.filter(course => course.id == courseId)[0]
+      let module = course.content.filter(module => module.id == moduleId)[0]
+      return module.lessons.filter(lesson => lesson.id == lessonId)[0]
     }
   },
   mutations: {

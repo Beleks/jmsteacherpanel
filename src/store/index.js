@@ -11,7 +11,9 @@ export default new Vuex.Store({
       desc: '',
       courseId: '',
       moduleIndex: ''
-    }
+    },
+    menuCurrent: ''
+
   },
   getters: {
   },
@@ -27,6 +29,9 @@ export default new Vuex.Store({
     },
     closeModal(state) {
       state.modal.isOpen = false
+    },
+    changeMenuCurrent(state, menu) {
+      state.menuCurrent = menu
     }
 
   },

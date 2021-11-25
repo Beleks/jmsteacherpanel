@@ -57,6 +57,7 @@ export default {
     lesson: Object,
     lessonIndex: Number,
     moduleIndex: Number,
+    moduleId: String,
     courseId: String,
   },
   data() {
@@ -66,25 +67,11 @@ export default {
   },
   computed: {
     lessonPath() {
-      let lessonId = this.lesson.id;
       let routeParams = {
-        path: "",
-        query: { id: lessonId },
+        name: "lesson",
+        params: { lessonId: this.lesson.id },
+        query: { moduleId: this.moduleId },
       };
-      switch (this.lesson.type) {
-        case "video":
-          routeParams.path = "theory";
-          break;
-        case "test":
-          routeParams.path = "test";
-          break;
-        case "vebinar":
-          routeParams.path = "vebinar";
-          break;
-        case "practice":
-          routeParams.path = "practice";
-          break;
-      }
       return routeParams;
     },
   },

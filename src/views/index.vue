@@ -38,23 +38,27 @@ export default {
 
       // Изменить при вложенности в editor
 
-      let lastEl = this.$route.matched.length - 1;
-      console.log(this.$route.matched);
-      console.log(this.$route.matched[lastEl]);
+      let matched = this.$route.matched;
+      let matchedLatstEl = matched.length - 1;
 
-      if (this.$route.matched[lastEl].path == "") {
+      console.log(matched); 
+      console.log(matched[matchedLatstEl]);
+
+      if (matched[matchedLatstEl].path == "") {
         // Перенос в beforMount в app.vue
 
         this.$router.replace({ path: "/profile" });
-      } else if (this.$route.matched[lastEl - 1].path == "") {
+      } else if (matched[matchedLatstEl - 1].path == "") {
         return "MainMenu";
-      } else if (this.$route.matched[lastEl].path == "/courses/:id") {
+      } else if (matched[matchedLatstEl].path == "/courses/:id") {
         return "CourseMenu";
       } else if (
-        this.$route.matched[3].path == "/courses/:id/editor"
+        matched[3].path == "/courses/:id/editor"
         // + проверка на длину ??
       ) {
         return "EditorMenu";
+      } else if (matched){
+
       }
       // ========
     },

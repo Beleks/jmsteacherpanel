@@ -2,11 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import User from '../views/settings/Settings.vue'
 
-import Theory from '../views/courses/course name/editor/content/theory/Theory.vue'
+import store from '../store/index'
+
 
 Vue.use(VueRouter)
 
-
+// console.log(store);
 
 const routes = [
   {
@@ -24,15 +25,20 @@ const routes = [
           {
             path: ':id',
             component: () => import('../views/courses/course name/Course.vue'),
+            // beforeEnter: (to, from, next) => {
+            //   store.commit('changeMenuCurrent', 'CourseMenu')
+            //   next()
+            // },
             children: [
               {
                 path: 'editor',
                 component: () => import('../views/courses/course name/editor/Editor.vue'),
+
                 children: [
                   {
                     path: 'main',
-                    name: 'mainInfo',
-                    component: () => import('../views/courses/course name/editor/tariffs/Tariffs.vue')
+                    name: 'mainEditor',
+                    component: () => import('../views/courses/course name/editor/main_info/MainInfo.vue')
                   },
                   {
                     path: 'content',
@@ -40,32 +46,11 @@ const routes = [
                     component: () => import('../views/courses/course name/editor/content/Content.vue'),
                     children: [
                       {
-                        path: 'theory',
-                        name: 'theory',
-                        component: () => import('../views/courses/course name/editor/content/theory/Theory.vue'),
-                      },
-                      {
-                        path: 'test',
-                        name: 'test',
-                        component: () => import('../views/courses/course name/editor/content/test/Test.vue'),
-                      },
-                      {
-                        path: 'practice',
-                        name: 'practice',
-                        component: () => import('../views/courses/course name/editor/content/practice/Practice.vue'),
-                      },
-                      {
-                        path: 'vebinar',
-                        name: 'vebinar',
-                        component: () => import('../views/courses/course name/editor/content/vebinar/Vebinar.vue'),
-                      },
-                      // component: () => import('../views/courses/course name/editor/content/theory/Theory.vue'),
+                        path: ':lessonId',
+                        name: 'lesson',
+                        component: () => import('../views/courses/course name/editor/content/lesson/Lesson.vue'),
 
-                      // {
-                      //   path: ':lesson',
-                      //   name: 'lesson',
-                      //   component: () => import('../views/courses/course name/editor/content/theory/Theory.vue')
-                      // },
+                      },
                     ]
                   },
                   {

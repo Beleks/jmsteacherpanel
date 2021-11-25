@@ -41,6 +41,7 @@ export default {
     courseId() {
       return this.$route.params.id;
     },
+    // Исправить название "courseModules"
     courseModules() {
       return this.$store.getters.currentCourse(this.courseId);
     },
