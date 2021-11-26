@@ -30,7 +30,9 @@
             <component :is="lesson.icon" />
           </div>
           <div class="title">{{ lesson.title }}</div>
-          <div class="edit">редактировать</div>
+          <router-link tag="div" class="edit" :to="lessonPath" append>
+            редактировать
+          </router-link>
         </div>
         <div class="icon" @click="deleteThisLesson()">
           <SvgTrash />
@@ -55,12 +57,23 @@ export default {
     lesson: Object,
     lessonIndex: Number,
     moduleIndex: Number,
+    moduleId: String,
     courseId: String,
   },
   data() {
     return {
       addBlock: "addLine",
     };
+  },
+  computed: {
+    lessonPath() {
+      let routeParams = {
+        name: "lesson",
+        params: { lessonId: this.lesson.id },
+        query: { moduleId: this.moduleId },
+      };
+      return routeParams;
+    },
   },
   methods: {
     deleteThisLesson() {

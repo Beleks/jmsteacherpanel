@@ -1,8 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import User from '../views/settings/Settings.vue'
+
+import store from '../store/index'
+
 
 Vue.use(VueRouter)
+
+// console.log(store);
 
 const routes = [
   {
@@ -20,10 +25,15 @@ const routes = [
           {
             path: ':id',
             component: () => import('../views/courses/course name/Course.vue'),
+            // beforeEnter: (to, from, next) => {
+            //   store.commit('changeMenuCurrent', 'CourseMenu')
+            //   next()
+            // },
             children: [
               {
                 path: 'editor',
                 component: () => import('../views/courses/course name/editor/Editor.vue'),
+
                 children: [
                   {
                     path: 'main',
@@ -36,8 +46,10 @@ const routes = [
                     component: () => import('../views/courses/course name/editor/content/Content.vue'),
                     children: [
                       {
-                        path: 'theory',
-                        component: () => import('../views/courses/course name/editor/content/theory/Theory.vue')
+                        path: ':lessonId',
+                        name: 'lesson',
+                        component: () => import('../views/courses/course name/editor/content/lesson/Lesson.vue'),
+
                       },
                     ]
                   },
@@ -54,14 +66,6 @@ const routes = [
       },
       { path: 'settings', component: () => import('../views/settings/Settings.vue') }
     ]
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
     path: '*',

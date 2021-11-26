@@ -69,9 +69,7 @@ export default {
     },
   },
   methods: {
-    editCourse() {
-      // this.$router.push({ name: "courses", params: { id: "1" } });
-    },
+    
   },
   components: {
     SvgLamp,

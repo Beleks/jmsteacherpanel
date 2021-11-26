@@ -45,9 +45,7 @@ export default {
   },
   methods: {
     addLesson(icon, index) {
-      console.log("тип урока: ", icon.type);
       let courseId = this.courseId;
-      console.log(this.moduleIndex);
       let moduleIndex = this.moduleIndex;
       this.$store.commit("addLesson", {
         courseId,

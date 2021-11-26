@@ -1,6 +1,6 @@
 <template>
   <div>
-    Урок: теория
+    Урок: тест
   </div>
 </template>
 

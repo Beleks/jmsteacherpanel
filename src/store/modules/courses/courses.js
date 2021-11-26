@@ -11,7 +11,7 @@ export default {
             title: 'Название модуля',
             group: '',
             tariffs: '',
-            desc: 'Описание модуля',
+            desc: 'Описание модуля 1',
             lessons: [
               {
                 id: '1000',
@@ -63,19 +63,42 @@ export default {
   getters: {
     currentCourse: state => id => {
       return state.courses.filter(course => course.id == id)[0]
+    },
+    currentLesson: state => (courseId, moduleId, lessonId) => {
+      let course = state.courses.filter(course => course.id == courseId)[0]
+      let module = course.content.filter(module => module.id == moduleId)[0]
+      return module.lessons.filter(lesson => lesson.id == lessonId)[0]
     }
   },
   mutations: {
+    // closeModal(state) {
+    //   console.log(state, 'from module');
+    // },
+    saveChangeFromModal(state, params) {
+      let variableCourse = state.courses.find(course => course.id == params.modal.courseId)
+      // сделать слияние объектов ?
+      let seletcModule = variableCourse.content[params.modal.moduleIndex]
+      seletcModule.title = params.modal.title
+      seletcModule.desc = params.modal.desc
+    },
     addModule(state, params) {
       let variableCourse = state.courses.find(course => course.id == params.courseId)
       let newId
+      function genID(lastNum) {
+        return (lastNum + "" + Math.floor(Math.random() * 100000));
+      }
       if (variableCourse.content.length === 0) {
         newId = '100'
       } else {
         let lastChildIndex = variableCourse.content.length - 1
-        newId = Number(variableCourse.content[lastChildIndex].id) + 1
+        newId = genID(Number(variableCourse.content[lastChildIndex].id))
       }
-      let title = params.newModule.title
+      let title
+      if (params.newModule.title === "") {
+        title = "Название модуля"
+      } else {
+        title = params.newModule.title
+      }
       let newModule = {
         id: newId,
         title,
@@ -117,19 +140,26 @@ export default {
         }
         return title
       }
+      function genID(lastNum = 1000) {
+        return (lastNum + "" + Math.floor(Math.random() * 100000));
+      }
 
+      let variableCourse = state.courses.find(course => course.id == params.courseId)
+      let lessons = variableCourse.content[params.moduleIndex].lessons
+
+      let moduleLength = variableCourse.content[params.moduleIndex].lessons.length
+      let newId = genID(Number(moduleLength))
       // метод должен быть и для вставки в определенное место и для вставки в конец
       // newLesson {id курса ? индекс модуля ? индекс урока ?}
       // Создовать title по умолчанию в зависимости от типа урока ->
       // Потом title можно изменить (цвет серый)
-      let variableCourse = state.courses.find(course => course.id == params.courseId)
-      let lessons = variableCourse.content[params.moduleIndex].lessons
+
       // получение нового id
 
       let newTitle = setDefaultTitle(params.lessonType)
 
       let newLesson = {
-        id: '1009',
+        id: newId,
         type: params.lessonType,
         icon: params.svgIcon,
         title: newTitle,
