@@ -1,17 +1,18 @@
 <template>
   <div class="container">
     <!-- <div>
-      modal
+      modal ?
     </div> -->
     <div class="menu">
-      <div class="header">
-        <div>JMS</div>
-        <div>teacher</div>
+      <div class="fixed">
+        <div class="header">
+          <div>JMS</div>
+          <div>teacher</div>
+        </div>
+        <component :is="navMenu" />
       </div>
-      <component :is="navMenu" />
     </div>
     <div class="page">
-      <!-- главный блок -->
       <div class="header">
         <div></div>
         <div class="exit">Выйти</div>
@@ -34,33 +35,20 @@ export default {
   },
   computed: {
     navMenu() {
-      // Выбор меню в зависимости от пути
-
-      // Изменить при вложенности в editor
-
       let matched = this.$route.matched;
       let matchedLatstEl = matched.length - 1;
 
-      console.log(matched); 
-      console.log(matched[matchedLatstEl]);
+      // console.log(matched);
+      // console.log(matched[matchedLatstEl]);
 
-      if (matched[matchedLatstEl].path == "") {
-        // Перенос в beforMount в app.vue
-
-        this.$router.replace({ path: "/profile" });
-      } else if (matched[matchedLatstEl - 1].path == "") {
+      if (matched[matchedLatstEl - 1].path == "") {
         return "MainMenu";
       } else if (matched[matchedLatstEl].path == "/courses/:id") {
         return "CourseMenu";
-      } else if (
-        matched[3].path == "/courses/:id/editor"
-        // + проверка на длину ??
-      ) {
+      } else if (matched[3].path == "/courses/:id/editor") {
         return "EditorMenu";
-      } else if (matched){
-
+      } else if (matched) {
       }
-      // ========
     },
   },
   components: {
@@ -77,8 +65,9 @@ export default {
   display: flex;
 }
 .menu {
-  // position: fixed;
-
+  .fixed {
+    position: fixed;
+  }
   .header {
     display: flex;
     align-items: center;

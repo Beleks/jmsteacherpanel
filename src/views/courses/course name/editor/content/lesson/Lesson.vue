@@ -1,7 +1,6 @@
 <template>
   <div>
-    <div>{{ lessonData }}</div>
-    <component :is="'Theory'" />
+    <component :is="lessonType" :lesson="lesson" />
   </div>
 </template>
 
@@ -12,6 +11,11 @@ import Vebinar from "@/components/course/edit/content/lesson/Vebinar.vue";
 import Practice from "@/components/course/edit/content/lesson/Practice.vue";
 
 export default {
+  data() {
+    return {
+      lesson: {},
+    };
+  },
   components: {
     Theory,
     Test,
@@ -19,32 +23,35 @@ export default {
     Practice,
   },
   computed: {
-    lessonData() {
-      let courseId = this.$route.params.id;
-      let lessonId = this.$route.params.lessonId;
-      let moduleId = this.$route.query.moduleId;
-
-      return this.$store.getters.currentLesson(courseId, moduleId, lessonId);
+    lessonType() {
+      let component = "";
+      switch (this.lesson.type) {
+        case "video":
+          component = "Theory";
+          break;
+        case "test":
+          component = "Test";
+          break;
+        case "vebinar":
+          component = "Vebinar";
+          break;
+        case "practice":
+          component = "Practice";
+          break;
+      }
+      return component;
     },
-    // lessonType() {
-    //   let paramsLesson = this.$route.params.lessonId;
-    //   let component = "";
-    //   switch (paramsLesson) {
-    //     case "theory":
-    //       component = "Theory";
-    //       break;
-    //     case "test":
-    //       component = "Test";
-    //       break;
-    //     case "vebinar":
-    //       component = "Vebinar";
-    //       break;
-    //     case "practice":
-    //       component = "Practice";
-    //       break;
-    //   }
-    //   return component;
-    // },
+  },
+  mounted() {
+    let courseId = this.$route.params.id;
+    let lessonId = this.$route.params.lessonId;
+    let moduleId = this.$route.query.moduleId;
+
+    this.lesson = this.$store.getters.currentLesson(
+      courseId,
+      moduleId,
+      lessonId
+    );
   },
 };
 </script>
