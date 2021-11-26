@@ -98,7 +98,6 @@ export default {
     justify-content: space-between;
 
     margin-bottom: 2.8rem;
-    // Нечеткое определение отступа ??
     .exit {
       color: rgba(43, 45, 66, 0.6);
       cursor: pointer;
