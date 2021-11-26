@@ -27,7 +27,7 @@
                 </router-link>
               </div>
               <div class="edit">
-                <!-- Убрать эффект ссылки / tag="span" - будет убран в 4v -->
+                <!-- заменить на slot -->
                 <router-link
                   tag="span"
                   :to="{ path: `${course.id}/editor/main` }"
@@ -63,8 +63,6 @@ export default {
       }
     },
     courses() {
-      // Получать только title, id ?
-      console.log(this.$store.state.courses.courses);
       return this.$store.state.courses.courses;
     },
   },

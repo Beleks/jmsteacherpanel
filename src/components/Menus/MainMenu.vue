@@ -50,9 +50,7 @@ export default {
   },
   computed: {
     choseMenuItem() {
-      // console.log(this.$route.matched[1].path);
       return this.$route.matched[1].path;
-      // При переходе на путь "/" выдает ошибку ??
     },
   },
   methods: {
@@ -71,6 +69,7 @@ export default {
 <style lang="scss" scoped>
 .menuItem {
   display: flex;
+  width: 196px;
   align-items: center;
   padding: 4px 10px;
   border-radius: 5px;

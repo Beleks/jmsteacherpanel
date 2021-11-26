@@ -87,7 +87,7 @@ export default {
   background-color: #f9f9ff;
   box-shadow: 4px 0px 15px rgba(0, 0, 0, 0.05);
 
-  padding: 30px 50px;
+  padding: 30px 50px 30px 30px;
 }
 .page {
   padding: 30px 50px;

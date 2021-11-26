@@ -11,7 +11,6 @@
           placeholder="Название модуля"
           @keyup.enter="addModule()"
         />
-        <!-- <div class="bg_title" v-show="!moduleTitle">Название модуля</div> -->
       </div>
     </div>
     <div
@@ -43,7 +42,6 @@ export default {
   },
   methods: {
     addModule() {
-      // Убрать переменные ?
       let title = this.moduleTitle;
       let courseId = this.courseId;
       let moduleIndex = this.moduleIndex;
