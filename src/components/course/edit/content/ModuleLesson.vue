@@ -8,7 +8,6 @@
       <div class="line"></div>
       <div>Добавить урок</div>
       <div class="line"></div>
-      <!-- <div>icons</div> -->
     </div>
     <div v-else>
       <AddLessonPanel

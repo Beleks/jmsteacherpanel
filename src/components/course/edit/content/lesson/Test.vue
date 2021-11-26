@@ -1,15 +1,26 @@
 <template>
   <div>
-    Урок: тест
+    <LessonHeader />
+    <div>{{ lesson.type }}</div>
   </div>
 </template>
 
 <script>
-export default {
+import LessonHeader from "./LessonHeader.vue";
 
-}
+export default {
+  props: {
+    lesson: Object,
+  },
+  data() {
+    return {};
+  },
+  computed: {},
+  components: {
+    LessonHeader,
+  },
+};
 </script>
 
 <style>
-
 </style>

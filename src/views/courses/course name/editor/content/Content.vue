@@ -66,19 +66,13 @@ export default {
 <style lang="scss" scoped>
 .list-complete-item {
   transition: all 0.6s;
-  // display: inline-block;
-  // margin-right: 10px;
 }
 .list-complete-enter {
-  /* .list-complete-leave-active до версии 2.1.8 */
-  // width: 100%;
   opacity: 0;
   transform: translateX(30px);
 }
 .list-complete-leave-to {
   opacity: 0;
-  // transform: translateX(30px);
-  // position: absolute;
 }
 .list-complete-leave-active {
   position: absolute;
@@ -95,7 +89,4 @@ export default {
   }
 }
 
-/*POPUP start*/
-
-/*POPUP end*/
 </style>

@@ -1,3 +1,9 @@
+function findCourseById(state, id) {
+  return state.courses.filter(course => course.id == id)[0]
+}
+function genID() {
+  return ("" + Math.floor(Math.random() * 100000));
+}
 
 export default {
   state: {
@@ -62,37 +68,26 @@ export default {
   },
   getters: {
     currentCourse: state => id => {
-      return state.courses.filter(course => course.id == id)[0]
+      // Находим нужный курс
+      return findCourseById(state, id)
     },
     currentLesson: state => (courseId, moduleId, lessonId) => {
-      let course = state.courses.filter(course => course.id == courseId)[0]
-      let module = course.content.filter(module => module.id == moduleId)[0]
-      return module.lessons.filter(lesson => lesson.id == lessonId)[0]
+      // Находим нужный курс -> находим модуль -> находим урок 
+      return state.courses.filter(course => course.id == courseId)[0]
+        .content.filter(module => module.id == moduleId)[0]
+        .lessons.filter(lesson => lesson.id == lessonId)[0]
     }
   },
   mutations: {
-    // closeModal(state) {
-    //   console.log(state, 'from module');
-    // },
     saveChangeFromModal(state, params) {
-      let variableCourse = state.courses.find(course => course.id == params.modal.courseId)
-      // сделать слияние объектов ?
-      let seletcModule = variableCourse.content[params.modal.moduleIndex]
-      seletcModule.title = params.modal.title
-      seletcModule.desc = params.modal.desc
+      let selectedModule = findCourseById(state, params.modal.courseId).content[params.modal.moduleIndex]
+      selectedModule.title = params.modal.title
+      selectedModule.desc = params.modal.desc
     },
     addModule(state, params) {
-      let variableCourse = state.courses.find(course => course.id == params.courseId)
-      let newId
-      function genID(lastNum) {
-        return (lastNum + "" + Math.floor(Math.random() * 100000));
-      }
-      if (variableCourse.content.length === 0) {
-        newId = '100'
-      } else {
-        let lastChildIndex = variableCourse.content.length - 1
-        newId = genID(Number(variableCourse.content[lastChildIndex].id))
-      }
+      let variableCourse = findCourseById(state, params.courseId)
+      let newId = genID()
+      console.log(newId);
       let title
       if (params.newModule.title === "") {
         title = "Название модуля"
@@ -107,7 +102,6 @@ export default {
         desc: '',
         lessons: []
       }
-      // variableCourse.content.push({сразу описание параметров модуля})
       if (params.moduleIndex === undefined) {
         variableCourse.content.push(newModule)
       } else {
@@ -115,7 +109,7 @@ export default {
       }
     },
     deleteModule(state, params) {
-      let variableCourse = state.courses.find(course => course.id == params.courseId)
+      let variableCourse = findCourseById(state, params.courseId)
       let selectedModuleIndex = variableCourse.content.findIndex(module => module.id == params.moduleId)
       variableCourse.content.splice(selectedModuleIndex, 1)
     },
@@ -140,22 +134,10 @@ export default {
         }
         return title
       }
-      function genID(lastNum = 1000) {
-        return (lastNum + "" + Math.floor(Math.random() * 100000));
-      }
+      let variableCourse = findCourseById(state, params.courseId)
+      let listLessons = variableCourse.content[params.moduleIndex].lessons
 
-      let variableCourse = state.courses.find(course => course.id == params.courseId)
-      let lessons = variableCourse.content[params.moduleIndex].lessons
-
-      let moduleLength = variableCourse.content[params.moduleIndex].lessons.length
-      let newId = genID(Number(moduleLength))
-      // метод должен быть и для вставки в определенное место и для вставки в конец
-      // newLesson {id курса ? индекс модуля ? индекс урока ?}
-      // Создовать title по умолчанию в зависимости от типа урока ->
-      // Потом title можно изменить (цвет серый)
-
-      // получение нового id
-
+      let newId = genID()
       let newTitle = setDefaultTitle(params.lessonType)
 
       let newLesson = {
@@ -166,16 +148,13 @@ export default {
         access: 'tarif_1',
       }
       if (params.lessonIndex === undefined) {
-        lessons.push(newLesson)
+        listLessons.push(newLesson)
       } else {
-        lessons.splice(params.lessonIndex, 0, newLesson)
+        listLessons.splice(params.lessonIndex, 0, newLesson)
       }
     },
     deleteLesson(state, params) {
-      // можем ли разделить данные ? (таблица куросв отедельно от контента)
-      // id курса ? индекс модуля ? индекс урока ?
-      // 
-      let variableCourse = state.courses.find(course => course.id == params.courseId)
+      let variableCourse = findCourseById(state, params.courseId)
       variableCourse.content[params.moduleIndex].lessons.splice(params.lessonIndex, 1)
     }
   }

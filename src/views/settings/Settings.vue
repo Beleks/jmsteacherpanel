@@ -1,5 +1,5 @@
 <template>
-  <div>{{ path.params }}</div>
+  <div>Настройки</div>
 </template>
 
 <script>
@@ -7,12 +7,7 @@ export default {
   data() {
     return {};
   },
-  computed: {
-    path() {
-      console.log(this.$route, "lesson");
-      return this.$route;
-    },
-  },
+  computed: {},
 };
 </script>
 

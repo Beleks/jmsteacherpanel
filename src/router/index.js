@@ -1,19 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import User from '../views/settings/Settings.vue'
-
-import store from '../store/index'
-
 
 Vue.use(VueRouter)
-
-// console.log(store);
 
 const routes = [
   {
     path: '',
     name: 'Profile',
     component: () => import('../views/index.vue'),
+    redirect: '/profile',
     children: [
       { path: 'profile', component: () => import('../views/profile/Profile.vue') },
       { path: 'calendar', component: () => import('../views/calendar/Calendar.vue') },
@@ -25,10 +20,6 @@ const routes = [
           {
             path: ':id',
             component: () => import('../views/courses/course name/Course.vue'),
-            // beforeEnter: (to, from, next) => {
-            //   store.commit('changeMenuCurrent', 'CourseMenu')
-            //   next()
-            // },
             children: [
               {
                 path: 'editor',

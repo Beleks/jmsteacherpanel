@@ -1,7 +1,7 @@
 <template>
   <div>
-    <LessonHeader/>
-    <div></div>
+    <LessonHeader />
+    <div>{{ lesson.type }}</div>
   </div>
 </template>
 
@@ -10,18 +10,12 @@ import LessonHeader from "./LessonHeader.vue";
 
 export default {
   props: {
-    // lesson: Object
+    lesson: Object,
   },
   data() {
     return {};
   },
-
-  computed: {
-    path() {
-      // console.log(this.$route, "from t");
-      // return this.$route;
-    },
-  },
+  computed: {},
   components: {
     LessonHeader,
   },

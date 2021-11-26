@@ -90,8 +90,6 @@ import SvgCross from "@/components/svg/SvgCross.vue";
 import AddModulePanel from "./AddModulePanel.vue";
 import AddLessonPanel from "./AddLessonPanel.vue";
 
-// import SvgCourse from '../../../svg/'
-
 export default {
   props: {
     module: Object,
@@ -106,8 +104,6 @@ export default {
   },
   computed: {},
   methods: {
-    hideLessons() {},
-    //  Открытие модального окна
     openEditModal() {
       this.$store.commit("openModal", {
         courseId: this.courseId,
@@ -116,7 +112,6 @@ export default {
         moduleDesc: this.module.desc,
       });
     },
-    // редактирование названия модуля
     deleteThisModule() {
       let courseId = this.courseId;
       let moduleId = this.module.id;
