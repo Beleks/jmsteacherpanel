@@ -51,6 +51,9 @@ export default {
       }
     },
   },
+  beforeMount(){
+    
+  },
   components: {
     MainMenu,
     CourseMenu,

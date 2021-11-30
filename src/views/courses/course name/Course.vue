@@ -1,7 +1,6 @@
 <template>
   <div>
-    <div>
-    </div>
+    <div></div>
     <div>
       <router-view></router-view>
     </div>
@@ -13,14 +12,16 @@ export default {
   data() {
     return {};
   },
-  // computed: {
-  //   path(){
-  //     return true;
-  //   },
-  //   PathParams() {
-  //     return this.$route.params.id;
-  //   },
-  // },
+  computed: {},
+  mounted() {
+    let courseId = this.$route.params.id;
+    if (courseId) {
+      
+    } else {
+      // Переход на страницу Курс не найден
+      this.$router.replace("/courses/");
+    }
+  },
 };
 </script>
 

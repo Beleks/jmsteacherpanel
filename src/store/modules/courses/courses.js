@@ -1,3 +1,4 @@
+
 function findCourseById(state, id) {
   return state.courses.filter(course => course.id == id)[0]
 }
@@ -156,6 +157,9 @@ export default {
     deleteLesson(state, params) {
       let variableCourse = findCourseById(state, params.courseId)
       variableCourse.content[params.moduleIndex].lessons.splice(params.lessonIndex, 1)
+    },
+    setNewLessonTitle(state, params) {
+      
     }
   }
 }

@@ -24,7 +24,7 @@ const routes = [
               {
                 path: 'editor',
                 component: () => import('../views/courses/course name/editor/Editor.vue'),
-
+                redirect: {name: 'mainEditor'},
                 children: [
                   {
                     path: 'main',

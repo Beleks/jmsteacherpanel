@@ -1,8 +1,9 @@
 <template>
   <div class="header">
     <div>
-      <div class="back">
+      <div class="back" @click="setNewLessonTitle()">
         <!-- svg back -->
+        back
       </div>
       <div class="access"></div>
       <div class="title">
@@ -14,7 +15,29 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    // получать id с props или с params
+    id: String,
+    title: String,
+    // access после изменить на Object
+    access: String,
+  },
+  data() {
+    return {
+      newTitle: "",
+    };
+  },
+  methods: {
+    setNewLessonTitle(){
+      this.$store.commit('setNewLessonTitle')  
+    }
+  },
+  mounted() {
+    
+    // получаем id module, course
+  },
+};
 </script>
 
 <style>
