@@ -1,6 +1,10 @@
 <template>
   <div>
-    <LessonHeader :id="lesson.id" :title="lesson.title" :access="lesson.access"/>
+    <LessonHeader
+      :id="lesson.id"
+      :title="lesson.title"
+      :access="lesson.access"
+    />
     <div>{{ lesson.type }}</div>
   </div>
 </template>
@@ -21,6 +25,7 @@ export default {
   components: {
     LessonHeader,
   },
+ 
   mounted() {},
 };
 </script>

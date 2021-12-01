@@ -34,12 +34,15 @@ export default {
     return {};
   },
   computed: {
+    pathParams() {
+      let params = Object.assign({}, this.$route.params);
+      params.moduleId = this.$route.query.moduleId;
+      console.log(params);
+      this.$store.commit("setPathParams", params);
+    },
     navMenu() {
       let matched = this.$route.matched;
       let matchedLatstEl = matched.length - 1;
-
-      // console.log(matched);
-      // console.log(matched[matchedLatstEl]);
 
       if (matched[matchedLatstEl - 1].path == "") {
         return "MainMenu";
@@ -51,9 +54,13 @@ export default {
       }
     },
   },
-  beforeMount(){
-    
+  mounted() {
+    // let params = Object.assign({}, this.$route.params);
+    // console.log(params);
+    // this.$store.commit("setPathParams", params);
+    this.$store.dispatch('setPathParams')
   },
+
   components: {
     MainMenu,
     CourseMenu,

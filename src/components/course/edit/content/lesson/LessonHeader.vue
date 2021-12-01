@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div>
-      <div class="back" @click="setNewLessonTitle()">
+      <div class="back">
         <!-- svg back -->
         back
       </div>
@@ -29,14 +29,9 @@ export default {
     };
   },
   methods: {
-    setNewLessonTitle(){
-      this.$store.commit('setNewLessonTitle')  
-    }
+    setNewLessonTitle() {},
   },
-  mounted() {
-    
-    // получаем id module, course
-  },
+  mounted() {},
 };
 </script>
 

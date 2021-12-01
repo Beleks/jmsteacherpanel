@@ -3,9 +3,7 @@
     <div v-if="!loader">
       <component :is="lessonType" :lesson="lesson" />
     </div>
-    <div v-else>
-      Загрузка...
-    </div>
+    <div v-else>Загрузка...</div>
   </div>
 </template>
 
@@ -48,8 +46,9 @@ export default {
       return component;
     },
   },
+  
   mounted() {
-    this.loader = true
+    this.loader = true;
     let courseId = this.$route.params.id;
     let lessonId = this.$route.params.lessonId;
     let moduleId = this.$route.query.moduleId;
@@ -61,7 +60,7 @@ export default {
           moduleId,
           lessonId
         );
-        this.loader = false
+        this.loader = false;
       } else {
         // урок не найден
         this.$router.replace("/courses/");

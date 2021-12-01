@@ -60,6 +60,7 @@ export default {
     AddModulePanel,
     Module,
   },
+  
 };
 </script>
 
@@ -88,5 +89,4 @@ export default {
     margin-bottom: 1.8em;
   }
 }
-
 </style>
