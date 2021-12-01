@@ -11,30 +11,38 @@ export default {
     selectedModule.title = params.modal.title
     selectedModule.desc = params.modal.desc
   },
-  addModule(state, params) {
+  addModule(state, { newModule, courseId, moduleIndex }) {
+    // Попробовать запись (state, {id, title *чтоб видеть ключи объекта* })
+
     // rootState - нельзя получить в мутации. Перенос action ? либо перенос в этот state
     // console.log(rootState);
 
-    let variableCourse = findCourseById(state, params.courseId)
-    let newId = genID()
-    let title
-    if (params.newModule.title === "") {
-      title = "Название модуля"
+    // let variableCourse = findCourseById(state, params.courseId)
+    // let newId = genID()
+    // let title
+    // if (params.newModule.title === "") {
+    //   title = "Название модуля"
+    // } else {
+    //   title = params.newModule.title
+    // }
+    // let newModule = {
+    //   id: newId,
+    //   title,
+    //   group: '',
+    //   tariffs: '',
+    //   desc: '',
+    //   lessons: []
+    // }
+    // ============
+    // variableCourse (id `id курса`)
+    // moduleIndex (для определения места вставки)
+    let variableCourse = findCourseById(state, courseId)
+
+    //Можли обойтись без moduleIndex ??
+    if (moduleIndex === undefined) {
+      variableCourse.content.splice(0, 0, newModule)
     } else {
-      title = params.newModule.title
-    }
-    let newModule = {
-      id: newId,
-      title,
-      group: '',
-      tariffs: '',
-      desc: '',
-      lessons: []
-    }
-    if (params.moduleIndex === undefined) {
-      variableCourse.content.push(newModule)
-    } else {
-      variableCourse.content.splice(params.moduleIndex, 0, newModule)
+      variableCourse.content.splice(moduleIndex, 0, newModule)
     }
   },
   deleteModule(state, params) {
@@ -89,5 +97,5 @@ export default {
   setNewLessonTitle(state, params) {
 
   },
-  
+
 }

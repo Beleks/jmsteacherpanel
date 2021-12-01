@@ -43,12 +43,11 @@ export default {
   methods: {
     addModule() {
       let title = this.moduleTitle;
-      let courseId = this.courseId;
       let moduleIndex = this.moduleIndex;
-      let newModule = {
+      let newModuleParams = {
         title,
       };
-      this.$store.commit("addModule", { courseId, moduleIndex, newModule });
+      this.$store.dispatch("addModule", { newModuleParams, moduleIndex });
       this.moduleTitle = "";
       this.$emit("closeAddPanel");
     },

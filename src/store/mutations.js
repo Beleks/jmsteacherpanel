@@ -1,11 +1,7 @@
 export default {
-  addModule(state) {
-    console.log(state, 'main state');
-    // Мы можем получить параметры маршрута из модуля в главном state 
-  },
-  // 
+
   setPathParams(state, params) {
-    state.pathPrams = Object.assign({}, params)
+    state.pathParams = Object.assign({}, params)
   },
   openModal(state, params) {
     state.modal = {
