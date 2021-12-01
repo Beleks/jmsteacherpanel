@@ -38,7 +38,6 @@ export default {
       let params = Object.assign({}, this.$route.params);
       params.moduleId = this.$route.query.moduleId;
       console.log(params);
-      this.$store.commit("setPathParams", params);
     },
     navMenu() {
       let matched = this.$route.matched;
@@ -55,12 +54,15 @@ export default {
     },
   },
   mounted() {
-    // let params = Object.assign({}, this.$route.params);
-    // console.log(params);
-    // this.$store.commit("setPathParams", params);
-    this.$store.dispatch('setPathParams')
+    let params = Object.assign({}, this.$route.params);
+    params.moduleId = this.$route.query.moduleId;
+    this.$store.commit("setPathParams", params);
   },
-
+  beforeUpdate() {
+    let params = Object.assign({}, this.$route.params);
+    params.moduleId = this.$route.query.moduleId;
+    this.$store.commit("setPathParams", params);
+  },
   components: {
     MainMenu,
     CourseMenu,

@@ -89,7 +89,5 @@ export default {
   setNewLessonTitle(state, params) {
 
   },
-  setPathParams() {
-    console.log('from module mutations');
-  }
+  
 }
