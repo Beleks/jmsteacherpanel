@@ -1,6 +1,5 @@
 <template>
   <div>
-    <LessonHeader />
     <div>{{ lesson.type }}</div>
   </div>
 </template>
