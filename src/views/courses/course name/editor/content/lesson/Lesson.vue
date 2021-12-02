@@ -46,7 +46,7 @@ export default {
       return component;
     },
   },
-  
+
   mounted() {
     this.loader = true;
     let courseId = this.$route.params.id;
@@ -54,6 +54,7 @@ export default {
     let moduleId = this.$route.query.moduleId;
 
     setTimeout(() => {
+      // хуки на эту страницу перехода ?
       if (lessonId && moduleId) {
         this.lesson = this.$store.getters.currentLesson(
           courseId,
