@@ -5,12 +5,16 @@
         class="icon"
         v-for="(icon, index) in icons"
         :key="index"
-        @click="addLesson(icon, lessonIndex)"
+        @click="addLesson(icon)"
       >
         <component :is="icon.svg" />
       </div>
     </div>
-    <div class="cancle" v-if="!(lessonIndex === undefined)" @click="$emit('closeAddPanel')">
+    <div
+      class="cancle"
+      v-if="!(lessonIndex === undefined)"
+      @click="$emit('closeAddPanel')"
+    >
       Отмена
     </div>
   </div>
@@ -24,8 +28,7 @@ import SvgVebinar from "@/components/svg/SvgVebinar.vue";
 
 export default {
   props: {
-    // newLessonIndex: Number,
-    moduleIndex: Number,
+    moduleId: String,
     lessonIndex: Number,
   },
   data() {
@@ -44,15 +47,12 @@ export default {
     },
   },
   methods: {
-    addLesson(icon, index) {
-      let courseId = this.courseId;
-      let moduleIndex = this.moduleIndex;
-      this.$store.commit("addLesson", {
-        courseId,
+    addLesson(icon) {
+      this.$store.dispatch("addLesson", {
+        moduleId: this.moduleId,
+        lessonIndex: this.lessonIndex,
         lessonType: icon.type,
-        moduleIndex,
         svgIcon: icon.svg,
-        lessonIndex: index,
       });
       this.$emit("closeAddPanel");
     },

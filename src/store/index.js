@@ -1,43 +1,30 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import courses from './modules/courses/courses.js'
+
+import courses from './modules/courses/index.js'
+import actions from './actions.js'
+import mutations from './mutations.js'
+// import getters from './getters.js'
+
 Vue.use(Vuex)
 
+const state = {
+  pathPrams: {},
+  modal: {
+    isOpen: false,
+    title: '',
+    desc: '',
+    courseId: '',
+    moduleIndex: ''
+  },
+  menuCurrent: ''
+}
+
+
 export default new Vuex.Store({
-  state: {
-    modal: {
-      isOpen: false,
-      title: '',
-      desc: '',
-      courseId: '',
-      moduleIndex: ''
-    },
-    menuCurrent: ''
-
-  },
-  getters: {
-  },
-  mutations: {
-    openModal(state, params) {
-      state.modal = {
-        isOpen: true,
-        title: params.moduleTitle,
-        desc: params.moduleDesc,
-        courseId: params.courseId,
-        moduleIndex: params.moduleIndex
-      }
-    },
-    closeModal(state) {
-      state.modal.isOpen = false
-    },
-    changeMenuCurrent(state, menu) {
-      state.menuCurrent = menu
-    }
-
-  },
-  actions: {
-
-  },
+  state,
+  mutations,
+  actions,
   modules: {
     courses
   }

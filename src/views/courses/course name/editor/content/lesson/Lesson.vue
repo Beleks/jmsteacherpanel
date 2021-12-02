@@ -1,6 +1,9 @@
 <template>
   <div>
-    <component :is="lessonType" :lesson="lesson" />
+    <div v-if="!loader">
+      <component :is="lessonType" :lesson="lesson" />
+    </div>
+    <div v-else>Загрузка...</div>
   </div>
 </template>
 
@@ -13,6 +16,7 @@ import Practice from "@/components/course/edit/content/lesson/Practice.vue";
 export default {
   data() {
     return {
+      loader: true,
       lesson: {},
     };
   },
@@ -42,16 +46,27 @@ export default {
       return component;
     },
   },
+
   mounted() {
+    this.loader = true;
     let courseId = this.$route.params.id;
     let lessonId = this.$route.params.lessonId;
     let moduleId = this.$route.query.moduleId;
 
-    this.lesson = this.$store.getters.currentLesson(
-      courseId,
-      moduleId,
-      lessonId
-    );
+    setTimeout(() => {
+      // хуки на эту страницу перехода ?
+      if (lessonId && moduleId) {
+        this.lesson = this.$store.getters.currentLesson(
+          courseId,
+          moduleId,
+          lessonId
+        );
+        this.loader = false;
+      } else {
+        // урок не найден
+        this.$router.replace("/courses/");
+      }
+    }, 500);
   },
 };
 </script>

@@ -34,12 +34,14 @@ export default {
     return {};
   },
   computed: {
+    pathParams() {
+      let params = Object.assign({}, this.$route.params);
+      params.moduleId = this.$route.query.moduleId;
+      console.log(params);
+    },
     navMenu() {
       let matched = this.$route.matched;
       let matchedLatstEl = matched.length - 1;
-
-      // console.log(matched);
-      // console.log(matched[matchedLatstEl]);
 
       if (matched[matchedLatstEl - 1].path == "") {
         return "MainMenu";
@@ -50,6 +52,16 @@ export default {
       } else if (matched) {
       }
     },
+  },
+  mounted() {
+    let params = Object.assign({}, this.$route.params);
+    params.moduleId = this.$route.query.moduleId;
+    this.$store.commit("setPathParams", params);
+  },
+  beforeUpdate() {
+    let params = Object.assign({}, this.$route.params);
+    params.moduleId = this.$route.query.moduleId;
+    this.$store.commit("setPathParams", params);
   },
   components: {
     MainMenu,

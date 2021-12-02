@@ -3,6 +3,7 @@
     <div>
       <div class="back">
         <!-- svg back -->
+        back
       </div>
       <div class="access"></div>
       <div class="title">
@@ -14,7 +15,24 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    // получать id с props или с params
+    id: String,
+    title: String,
+    // access после изменить на Object
+    access: String,
+  },
+  data() {
+    return {
+      newTitle: "",
+    };
+  },
+  methods: {
+    setNewLessonTitle() {},
+  },
+  mounted() {},
+};
 </script>
 
 <style>

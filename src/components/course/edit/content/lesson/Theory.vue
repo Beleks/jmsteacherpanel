@@ -1,6 +1,10 @@
 <template>
   <div>
-    <LessonHeader />
+    <LessonHeader
+      :id="lesson.id"
+      :title="lesson.title"
+      :access="lesson.access"
+    />
     <div>{{ lesson.type }}</div>
   </div>
 </template>
@@ -13,12 +17,16 @@ export default {
     lesson: Object,
   },
   data() {
-    return {};
+    return {
+      loader: true,
+    };
   },
   computed: {},
   components: {
     LessonHeader,
   },
+ 
+  mounted() {},
 };
 </script>
 

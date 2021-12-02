@@ -44,7 +44,7 @@
                 <SvgArrow />
               </div>
             </div>
-            <div class="icon" @click="deleteThisModule()">
+            <div class="icon" @click="deleteModule()">
               <SvgTrash />
             </div>
           </div>
@@ -58,12 +58,10 @@
                 v-for="(lesson, index) in module.lessons"
                 :key="index"
                 :lesson="lesson"
-                :moduleIndex="moduleIndex"
                 :moduleId="module.id"
                 :lessonIndex="index"
-                :courseId="courseId"
               />
-              <AddLessonPanel :moduleIndex="moduleIndex" />
+              <AddLessonPanel :moduleId="module.id" />
             </div>
           </div>
         </div>
@@ -94,7 +92,6 @@ export default {
   props: {
     module: Object,
     moduleIndex: Number,
-    courseId: String,
   },
   data() {
     return {
@@ -112,10 +109,8 @@ export default {
         moduleDesc: this.module.desc,
       });
     },
-    deleteThisModule() {
-      let courseId = this.courseId;
-      let moduleId = this.module.id;
-      this.$store.commit("deleteModule", { courseId, moduleId });
+    deleteModule() {
+      this.$store.dispatch("deleteModule", { moduleId: this.module.id });
     },
   },
   components: {
