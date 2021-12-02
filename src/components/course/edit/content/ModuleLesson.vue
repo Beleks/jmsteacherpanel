@@ -11,8 +11,8 @@
     </div>
     <div v-else>
       <AddLessonPanel
+        :moduleId="moduleId"
         :lessonIndex="lessonIndex"
-        :moduleIndex="moduleIndex"
         @closeAddPanel="addBlock = 'addLine'"
       />
     </div>
@@ -33,7 +33,7 @@
             редактировать
           </router-link>
         </div>
-        <div class="icon" @click="deleteThisLesson()">
+        <div class="icon" @click="deleteLesson()">
           <SvgTrash />
         </div>
       </div>
@@ -55,9 +55,7 @@ export default {
   props: {
     lesson: Object,
     lessonIndex: Number,
-    moduleIndex: Number,
     moduleId: String,
-    courseId: String,
   },
   data() {
     return {
@@ -75,10 +73,9 @@ export default {
     },
   },
   methods: {
-    deleteThisLesson() {
-      this.$store.commit("deleteLesson", {
-        courseId: this.courseId,
-        moduleIndex: this.moduleIndex,
+    deleteLesson() {
+      this.$store.dispatch("deleteLesson", {
+        moduleId: this.moduleId,
         lessonIndex: this.lessonIndex,
       });
     },

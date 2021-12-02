@@ -9,7 +9,6 @@
           :key="module.id"
           :module="module"
           :moduleIndex="index"
-          :courseId="courseId"
           class="list-complete-item"
         >
           <div v-if="index == courseModules.content.length - 1">
@@ -41,7 +40,7 @@ export default {
     courseId() {
       return this.$route.params.id;
     },
-    // Исправить название "courseModules"
+    // Исправить название "courseModules" ?
     courseModules() {
       return this.$store.getters.currentCourse(this.courseId);
     },

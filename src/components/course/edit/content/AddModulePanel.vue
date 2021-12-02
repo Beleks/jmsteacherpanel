@@ -42,12 +42,13 @@ export default {
   },
   methods: {
     addModule() {
-      let title = this.moduleTitle;
-      let moduleIndex = this.moduleIndex;
       let newModuleParams = {
-        title,
+        title: this.moduleTitle,
       };
-      this.$store.dispatch("addModule", { newModuleParams, moduleIndex });
+      this.$store.dispatch("addModule", {
+        newModuleParams,
+        moduleIndex: this.moduleIndex,
+      });
       this.moduleTitle = "";
       this.$emit("closeAddPanel");
     },

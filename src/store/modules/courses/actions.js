@@ -6,10 +6,7 @@ function genID() {
 }
 
 export default {
-  // { newModuleParams, moduleIndex }
-  addModule({ state, rootState, commit }, payload) {
-    // не получаем полезную нагрузку :(
-    console.log(payload.moduleIndex, 'moduleIndex');
+  addModule({ rootState, commit }, { newModuleParams, moduleIndex }) {
     let newId = genID()
     // болия кароткая версия if else ? `??=`
     let title
@@ -26,5 +23,43 @@ export default {
       lessons: []
     }
     commit('addModule', { newModule, courseId: rootState.pathParams.id, moduleIndex })
-  }
+  },
+  deleteModule({ rootState, commit }, { moduleId }) {
+    commit("deleteModule", { courseId: rootState.pathParams.id, moduleId })
+  },
+  addLesson({ rootState, commit }, { moduleId, lessonIndex, lessonType, svgIcon, }) {
+    function setDefaultTitle(lessonType) {
+      let title = ''
+      switch (lessonType) {
+        case 'video':
+          title = 'Название видеоурока'
+          break;
+        case 'test':
+          title = 'Название теста'
+          break;
+        case 'practice':
+          title = 'Название задания'
+          break;
+        case 'vebinar':
+          title = 'Название вебинара'
+          break;
+        // default:
+        //   break;
+      }
+      return title
+    }
+    let newId = genID()
+    let newTitle = setDefaultTitle(lessonType)
+    let newLesson = {
+      id: newId,
+      type: lessonType,
+      icon: svgIcon,
+      title: newTitle,
+      access: 'tarif_1',
+    }
+    commit('addLesson', { courseId: rootState.pathParams.id, moduleId, lessonIndex, newLesson })
+  },
+  deleteLesson({ rootState, commit }, { moduleId, lessonIndex }) {
+    commit('deleteLesson', { courseId: rootState.pathParams.id, moduleId, lessonIndex })
+  },
 }
