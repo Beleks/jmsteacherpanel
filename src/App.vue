@@ -9,12 +9,10 @@ export default {
   data() {
     return {};
   },
-  
 };
 </script>
 
 <style lang="scss">
-
 @font-face {
   font-family: "Roboto Medium";
   src: url("./assets/fonts/Roboto/Roboto-Medium.ttf");
@@ -31,6 +29,7 @@ export default {
 }
 html {
   background-color: #fcfcff;
+  color: #2b2d42;
 }
 input {
   all: unset;

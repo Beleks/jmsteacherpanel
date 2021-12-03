@@ -1,6 +1,13 @@
 <template>
   <div>
     <div v-if="!loader">
+      <div>
+        <LessonHeader
+          :id="lesson.id"
+          :title="lesson.title"
+          :access="lesson.access"
+        />
+      </div>
       <component :is="lessonType" :lesson="lesson" />
     </div>
     <div v-else>Загрузка...</div>
@@ -8,6 +15,8 @@
 </template>
 
 <script>
+import LessonHeader from "@/components/course/edit/content/lesson/LessonHeader.vue";
+
 import Theory from "@/components/course/edit/content/lesson/Theory.vue";
 import Test from "@/components/course/edit/content/lesson/Test.vue";
 import Vebinar from "@/components/course/edit/content/lesson/Vebinar.vue";
@@ -21,6 +30,7 @@ export default {
     };
   },
   components: {
+    LessonHeader,
     Theory,
     Test,
     Vebinar,
@@ -66,7 +76,7 @@ export default {
         // урок не найден
         this.$router.replace("/courses/");
       }
-    }, 500);
+    }, 0);
   },
 };
 </script>
