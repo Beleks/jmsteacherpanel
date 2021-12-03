@@ -8,7 +8,6 @@ function genID() {
 export default {
   addModule({ rootState, commit }, { newModuleParams, moduleIndex }) {
     let newId = genID()
-    // болия кароткая версия if else ? `??=`
     let title
     if (newModuleParams.title === "") {
       title = "Название модуля"
